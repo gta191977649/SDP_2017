@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>SDP Jouneral</title>
-
     <!-- Bootstrap -->
-    <link href="Assets/bootstrapThemed.min.css" rel="stylesheet">
+    <link href="https://bootswatch.com/4-alpha/cerulean/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet" type="text/css">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
    	 <!-- jQuery-->
@@ -34,70 +33,55 @@
 </head>
 <body>
    	<!-- 导航条 -->
-  	<nav class="navbar navbar-default">
-  	
-  		<div class="container">
-	  <div class="container-fluid">
-		<div class="navbar-header">
-		  <a class="navbar-brand" href="#">
-			SDP Jouneral
-		  </a>
-		</div>
-  	
-	  	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	  			<div class="btn-group pull-right ">
-			<ul class="nav navbar-nav">
+  	<nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">SDP Jouneral</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Jounerals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Discovery</a>
+          </li>
+         
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+			  
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        
+        
+        <ul class="nav navbar-nav">
  				<?php if(isLog()) { ?>
-  				<li role="presentation" class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+  				<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <?php echo getName(); ?> <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu">
-      	<li><a href="#">Manage</a></li>
-    	<li><a href="Assets/php/user_logout.php">Logout</a></li>
-    </ul>
+     <div class="dropdown-menu" aria-labelledby="dropdown01">
+      	<a class="dropdown-item" href="#">Manage</a>
+    	<a class="dropdown-item" href="Assets/php/user_logout.php">Logout</a>
+    </div>
   </li> 		
 				<?php } else {	?>
-					
-				<li><a href="login.php">Login</a></li>
+					 <a class="nav-link" href="login.php">Login</a>
+			
 				
 				<?php } ?>
 	  		</ul>
 			
-			</div>
-	  		<ul class="nav navbar-nav">
-	  			<li><a href="#">Home</a></li>
-	  			<li><a href="#">My Jounerals</a></li>
-	  			<li><a href="#">Discovery</a></li>
-	  		</ul>
-	  		
-         <form class="form-inline">
-         
-          
-          <form>
-    <div class="input-group pull-right" style="margin-top: 7px;">
-      <span class="input-group">
         
-      </span>
-      <input type="text"class="form-control col-md-5" placeholder="Search">
-      <span class="input-group-btn">
-  		<select class="form-control selectpicker col-xs-0">
-          <option>Word</option>
-          <option>Date</option>
-        </select>
-        <button class="btn btn-default" type="button"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-      </span>
-    </div><!-- /input-group -->
-    </form>
-  
-        </form>
         
-		</div>
-	  
+      </div>
+    </nav>
 
-	  </div>
-		</div>
-  </nav>
   	
 	
   	

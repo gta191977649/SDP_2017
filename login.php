@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>Login</title>
 <!-- Bootstrap -->
 <link href="Assets/bootstrapThemed.min.css" rel="stylesheet">
 <link href="css/custom.css" rel="stylesheet" type="text/css">
