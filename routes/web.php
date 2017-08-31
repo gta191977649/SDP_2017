@@ -11,19 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontpage');
+//This will force user to login in order to use the system.
+//using group and middleware.
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/', function () {
+        return view('frontpage');
+    })->name('index');
+
+    Route::get('/notebooks','NotebooksController@index')->name('notebooks.index');
+    Route::post('/notebooks','NotebooksController@store');
+    
+    Route::get('/notebooks/create','NotebooksController@create');
+    Route::get('/notebooks/{notebookID}','NotebooksController@edit');
+    Route::put('/notebooks/{notebookID}','NotebooksController@update');
+    Route::delete('/notebooks/{notebookID}','NotebooksController@delete');
 });
 
-
-Route::get('/notebooks','NotebooksController@index');
-Route::post('/notebooks','NotebooksController@store');
-
-Route::get('/notebooks/create','NotebooksController@create');
-Route::get('/notebooks/{notebookID}','NotebooksController@edit');
-Route::put('/notebooks/{notebookID}','NotebooksController@update');
-Route::delete('/notebooks/{notebookID}','NotebooksController@delete');
-
+//Session Test
+Route::get('/session/set/{data}','SessionController@setSession');
+Route::get('/session/show','SessionController@getSession');
 
 //Route::get('/home/{param}','TestController@test');
 
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

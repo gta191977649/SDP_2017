@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //Relationship
+    //this will insert user_id to notebooks table by default
+    public function notebooks()
+    {
+        return $this->hasMany(Notebook::class);
+    }
 }
