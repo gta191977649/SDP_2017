@@ -5,7 +5,7 @@
             <div class="container">
                 <!-- heading -->
                 <div class="pull-xs-right float-right">
-                    <a class="btn btn-primary" href="notebooks/create" role="button">
+                    <a class="btn btn-primary" href="{{ route('notebooks.create') }}" role="button">
                         New NoteBook +
                     </a>
                 </div>
@@ -32,7 +32,7 @@
                     <div class="col-sm-6 col-md-3 ">
                         <div class="card p-2">
                             <div class="card-block">
-                                <a href="#">
+                                <a href="{{ route('notebooks.show',$noteObj->id) }}">
                                     <h4 class="card-title">
                                         {{ $noteObj->name }}
                                     </h4>
@@ -42,7 +42,7 @@
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('dist/img/notebook.jpg') }}"/>
                             </a>
                             <div class="card-block pt-2">
-                                <a class="card-link" href="notebooks/{{ $noteObj->id }}">
+                                <a class="card-link" href="{{ route('notebooks.edit',$noteObj->id) }}">
                                     Edit Notebook
                                 </a>
                                 <form  action="/notebooks/{{ $noteObj->id }}" class="pull-xs-right5 card-link" method="POST" style="display:inline">

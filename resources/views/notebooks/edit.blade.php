@@ -3,7 +3,7 @@
 
 <div class = "container"> 
     <h1>Edit</h1>
-    <form action="/notebooks/{{$notebook->id}}" method="POST">
+    <form action="{{ route('notebooks.update',$notebook->id) }}" method="POST">
     {{ csrf_field() }}
     {{ method_field('PUT')}}
         <div class="form-group">

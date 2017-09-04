@@ -66,12 +66,14 @@
         
         @yield('content')<!-- 自定义内容 -->
     </div>
+    {{--
     <!-- /container -->
     <footer class="footer">
         <div class="container">
             <span class="text-muted">Footer</span>
         </div>
     </footer>
+    --}}
     <!-- Js Stuff -->
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

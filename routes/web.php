@@ -21,10 +21,16 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/notebooks','NotebooksController@index')->name('notebooks.index');
     Route::post('/notebooks','NotebooksController@store');
     
-    Route::get('/notebooks/create','NotebooksController@create');
-    Route::get('/notebooks/{notebookID}','NotebooksController@edit');
-    Route::put('/notebooks/{notebookID}','NotebooksController@update');
+    Route::get('/notebooks/create','NotebooksController@create')->name('notebooks.create');
+    Route::get('/notebooks/{notebookID}','NotebooksController@show')->name('notebooks.show');
+    
+    Route::get('/notebooks/{notebookID}/edit','NotebooksController@edit')->name('notebooks.edit');
+    Route::put('/notebooks/{notebookID}','NotebooksController@update')->name('notebooks.update');
     Route::delete('/notebooks/{notebookID}','NotebooksController@delete');
+
+    
+    Route::resource('notes','NotesController');
+    Route::get('notes/{notebookID}/createNote','NotesController@createNote')->name('notes.createNote');
 });
 
 //Session Test

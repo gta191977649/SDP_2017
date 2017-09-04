@@ -34,7 +34,7 @@ class NotebooksController extends Controller
 
 	public function edit($noteID)
 	{
-		$user = Auth::user;
+		$user = Auth::user();
 		$noteData = $user->notebooks()->where('id',$noteID )->first();
 
 		//$noteData = Notebook::where('id',$noteID )->first();//只获取其中一个数据
@@ -59,6 +59,14 @@ class NotebooksController extends Controller
 		//$notebook = Notebook::where('id',$id )->first();
 		$notebook->delete();
 		return redirect('../notebooks');
+	}
+
+	public function show($id)
+	{
+		$notebook = NoteBook::findOrFail($id);
+
+		$notes = $notebook->notes;
+		return view('notes/index')->with('notes',$notes)->with('notebook',$notebook);
 	}
 }
 
