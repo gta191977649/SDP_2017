@@ -31,7 +31,6 @@
     <body>
         <!-- 导航条 -->
         <?php require("Templates/navbar.php"); ?> 		
-
         <div class="container">
 
             <!-- InstanceBeginEditable name="MainConcent" -->
