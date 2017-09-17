@@ -30,6 +30,8 @@ Route::group(['middleware'=>'auth'],function(){
 
     
     Route::resource('notes','NotesController');
+    Route::get('notes/{note}/history/','NotesController@showHistory')->name('notes.history');
+    
     Route::get('notes/{notebookID}/createNote','NotesController@createNote')->name('notes.createNote');
 });
 

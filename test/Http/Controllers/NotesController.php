@@ -70,11 +70,15 @@ class NotesController extends Controller
    
     public function showHistory($id)
     {
+        //
+        
+        //$historyRecords = Note::find($id)->noterecords;
 
-        $historyRecords = NoteRecord::withTrashed()->where('note_id', $id)->orderBy('created_at', 'desc')->get();
-        //return $historyRecords;
+        $historyRecords = NoteRecord::where('note_id', $id)
+        ->get();
 
-        return view('notes.history',compact('historyRecords'));
+        return $historyRecords;
+        //return view('notes.history',compact('historyRecords'));
     }
     
     /**
@@ -85,7 +89,7 @@ class NotesController extends Controller
      */
     public function edit($id)
     {
-
+        //
         //get the note that user want to edit
         $note = Note::find($id);
         //get the latest version of the note 
