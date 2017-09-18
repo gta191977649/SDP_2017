@@ -17,6 +17,7 @@ class CreateNotebooksTable extends Migration
             $table->increments('id');
             $table->integer('user_id');//FK
             $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

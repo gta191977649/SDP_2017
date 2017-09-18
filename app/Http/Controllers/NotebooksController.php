@@ -12,8 +12,8 @@ class NotebooksController extends Controller
     	//return view('notebooks/index'); 
 		//$notes = Notebook::all(); //从数据库获取数据
 		$user = Auth::user(); // get current login in user
-		$note_books = $user->notebooks; // get all notebooks related to this user.
-
+		$note_books = $user->notebooks()->withTrashed()->get(); // get all notebooks related to this user.
+		
     	//return $notes;
     	return view('notebooks/index')->with('notes',$note_books); //Passing the $note_books to view.
 	}
@@ -53,7 +53,7 @@ class NotebooksController extends Controller
 
 	public function delete($id)
 	{
-		//找哪个notebok要删除
+		
 		$user = Auth::user();
 		$notebook = $user->notebooks()->where('id',$id )->first();
 		//$notebook = Notebook::where('id',$id )->first();
@@ -63,9 +63,12 @@ class NotebooksController extends Controller
 
 	public function show($id)
 	{
-		$notebook = NoteBook::findOrFail($id);
+		$notebook = NoteBook::withTrashed()->find($id);
 
-		$notes = $notebook->notes;
+		//$notes = $notebook->notes;
+		$notes = $notebook->notes()->withTrashed()->get();
+		//return $notes;
+		//return $notes->find(1)->noterecords;
 		//$n = $notes->find(2)->noterecords->first();
 		//$notes->find(2)->noterecords->first()->title;
 		//return $n->created_at;

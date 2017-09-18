@@ -15,19 +15,14 @@ class Note extends Model
     
     public function noterecords()
     {
-        return $this->hasMany("App\NoteRecord");
+        return $this->hasMany("App\NoteRecord")->withTrashed();
     }
 
     public function notebook()
     {
-        return $this->belongsTo(NoteBook::class);
+        return $this->belongsTo("App\NoteBook")->withTrashed();
     }
-    //Get the latest version
-    public function latest()
-    {
-        return "OK";
-    }
-
+   
     
 
 }

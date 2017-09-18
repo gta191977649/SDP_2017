@@ -20,7 +20,7 @@ class NoteRecord extends Model
 
     public function note()
     {
-        return $this->belongsTo("App\Note");
+        return $this->belongsTo("App\Note")->withTrashed();
     }
 
 

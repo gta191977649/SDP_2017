@@ -23,12 +23,35 @@
                
                 <br>
                 
-                <!-- ================ Notebooks==================== -->
-                <!-- notebook1 -->
-                
+               
                     
                 <div class="row">
                     @foreach ($notes as $noteObj)
+                    @if($noteObj->trashed())
+                    <div class="col-sm-6 col-md-3 ">
+                        <div class="card p-2">
+                            <div class="card-block">
+                                <a href="{{ route('notebooks.show',$noteObj->id) }}">
+                                    <h4 class="card-title">
+                                        {{ $noteObj->name }}
+                     
+                                    </h4>
+                                </a>
+                            </div>
+                            <a href="#">
+                                <img alt="Responsive image" class="img-fluid" src="{{ asset('dist/img/notebook-del.jpg') }}"/>
+                            </a>
+                            <div class="card-block pt-2">
+                                
+                                
+                                
+                            <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled/>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    @else
+
                     <div class="col-sm-6 col-md-3 ">
                         <div class="card p-2">
                             <div class="card-block">
@@ -54,6 +77,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     @endforeach
                </div>
             </div>
