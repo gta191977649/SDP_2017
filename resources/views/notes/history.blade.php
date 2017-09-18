@@ -25,7 +25,7 @@
             </div>
             <div class="card-body">
       
-                <p>{{ $n->body }}</p>
+                <p>{!! $n->body !!}</p>
                
             </div>
         </div>

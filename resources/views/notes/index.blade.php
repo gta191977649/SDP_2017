@@ -31,23 +31,23 @@
 
             <!--note1 -->
             @foreach($notes as $notesObj)
-            
+           
             
             @if($notesObj->trashed())
             <!-- Deal with deleted item here -->
                 <div class="card">
                     <div class="card-body">
-                    <div class="float-right">{{ $notesObj->noterecords->first()['created_at']}}</div>
+                    <div class="float-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
                     <a href="">
                     
                         <h4 class="card-title ">
-                            {{ $notesObj->noterecords->first()['title'] }}
+                            {{ $notesObj->noterecords->last()['title'] }}
                             <span class="badge badge-secondary">Deleted Item</span>
 
                         </h4>
                     </a>
                     <p class="card-text">
-                        {{ $notesObj->noterecords->first()['body'] }}
+                        {!! $notesObj->noterecords->last()['body'] !!}
                     </p>
 
                     <hr/>
@@ -61,16 +61,16 @@
             @else
                 <div class="card">
                     <div class="card-body">
-                    <div class="float-right">{{ $notesObj->noterecords->first()['created_at']}}</div>
+                    <div class="float-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
                     <a href="">
                     
                         <h4 class="card-title">
-                            {{ $notesObj->noterecords->first()['title'] }}
+                            {{ $notesObj->noterecords->last()['title'] }}
                             
                         </h4>
                     </a>
                     <p class="card-text">
-                        {{ $notesObj->noterecords->first()['body'] }}
+                        {!! $notesObj->noterecords->last()['body'] !!}
                     </p>
 
                     <hr/>
