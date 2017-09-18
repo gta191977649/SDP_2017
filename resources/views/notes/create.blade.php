@@ -12,7 +12,9 @@
         <div class="form-group">
             <label for"body">Note Body</label>
             <!--<input class="form-control" type="text" name="body"> -->
-            <textarea class="form-control" type="text" name="body" rows="10"></textarea>
+            <textarea class="form-control" type="text" name="body" rows="10" id="bodyField"></textarea>
+            @ckeditor('bodyField')
+
         </div>
         <input type="hidden" name="notebook_id" value="{{ $id }}">
         <input class="btn btn-primary" type="submit" value ="Add">

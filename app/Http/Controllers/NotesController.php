@@ -72,7 +72,7 @@ class NotesController extends Controller
     {
 
         $historyRecords = NoteRecord::withTrashed()->where('note_id', $id)->orderBy('created_at', 'desc')->get();
-        //return $historyRecords;
+        //return $historyRecords->max('created_at');
 
         return view('notes.history',compact('historyRecords'));
     }
@@ -89,7 +89,7 @@ class NotesController extends Controller
         //get the note that user want to edit
         $note = Note::find($id);
         //get the latest version of the note 
-        $lastVer = $note->noterecords->first();
+        $lastVer = $note->noterecords->last();
         //return $lastVer it to the front end;
         return view('notes.edit')->with('note',$lastVer);
     }
