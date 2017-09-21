@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         JeroenNoten\LaravelCkEditor\ServiceProvider::class,
+        GeneaLabs\LaravelCaffeine\Providers\LaravelCaffeineService::class,
         
     ],
 
