@@ -22,7 +22,7 @@
         <div class="row">
             @foreach ($notes as $noteObj)
                 @if(!($noteObj->trashed()))
-                    <div class="col-sm-6 col-md-3 ">
+                    <div class="col-sm-6 col-md-3 notebook">
                         <div class="card p-2">
                             <div class="card-block">
 
@@ -65,7 +65,7 @@
 
         @foreach ($notes as $noteObj)
             @if(($noteObj->trashed()))
-                <div class="col-sm-6 col-md-3 notebook-hidden">
+                <div class="col-sm-6 col-md-3 notebook notebook-hidden">
                     <div class="card p-2">
                         <div class="card-block">
                             <a href="{{ route('notebooks.show',$noteObj->id) }}">

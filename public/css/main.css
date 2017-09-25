@@ -17,6 +17,9 @@ body {
 	padding-top: 50px;
 	padding-left: 30px;
 }
+.notebook{
+	margin-bottom: 10px;
+}
 .notes-group{
 	/*margin-top: 10px;*/
 	padding-top: 50px;
@@ -64,10 +67,7 @@ body {
 a>img{
 	width: 238px;
 }
-.row{
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
+
 /*
 .notebook-hidden{
 	display: none;
