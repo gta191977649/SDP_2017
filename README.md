@@ -10,3 +10,5 @@
 - Rename the App from Laravel to JournalApp
 - Changed the redirection homepage to display the list of notebooks instead of a button
 - Added fontawesome icons to make it a bit snazzy
+- Removed Default laravel homepage
+- Did some text formatting (editor automatically did it? (ATOM Editor))
