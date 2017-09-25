@@ -19,34 +19,9 @@
                 You have no notebooks.
             </div>
         @endif
-
-        <br>
-
         <div class="row">
             @foreach ($notes as $noteObj)
-                @if($noteObj->trashed())
-                    <div class="col-sm-6 col-md-3 ">
-                        <div class="card p-2">
-                            <div class="card-block">
-                                <a href="{{ route('notebooks.show',$noteObj->id) }}">
-                                    <h4 class="notebook-title">
-                                        {{ $noteObj->name }}
-
-                                    </h4>
-                                </a>
-                                 <div class="card-link2">
-                                     REMOVED
-                                 </div>
-                            </div>
-                            <a href="#">
-                                <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
-                            </a>
-                            <div class="card-block pt-2">
-                                <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled/>
-                            </div>
-                        </div>
-                    </div>
-                @else
+                @if(!($noteObj->trashed()))
                     <div class="col-sm-6 col-md-3 ">
                         <div class="card p-2">
                             <div class="card-block">
@@ -75,6 +50,43 @@
                         </div>
                     </div>
                 </div>
+            @endif
+        @endforeach
+    </div>
+    <hr/>
+    <div class="pull-xs-right float-right">
+        <button class="btn btn-primary" onclick="togglehidden()" role="button">
+            Toggle Hidden Notebooks
+        </button>
+    </div>
+    <h2 class="hidden-notebook-title">Hidden or Deleted Journals <span class="value"></span></h2>
+    <hr/>
+    <div class="row">
+
+        @foreach ($notes as $noteObj)
+            @if(($noteObj->trashed()))
+                <div class="col-sm-6 col-md-3 notebook-hidden">
+                    <div class="card p-2">
+                        <div class="card-block">
+                            <a href="{{ route('notebooks.show',$noteObj->id) }}">
+                                <h4 class="notebook-title">
+                                    {{ $noteObj->name }}
+
+                                </h4>
+                            </a>
+                            <div class="card-link2">
+                                REMOVED
+                            </div>
+                        </div>
+                        <a href="#">
+                            <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
+                        </a>
+                        <div class="card-block pt-2">
+                            <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled/>
+                        </div>
+                    </div>
+                </div>
+
             @endif
         @endforeach
     </div>

@@ -64,7 +64,11 @@ body {
 a>img{
 	width: 238px;
 }
-
-.someshit{
-	font-size: 12rem;
+.row{
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
+/*
+.notebook-hidden{
+	display: none;
+}*/
