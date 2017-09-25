@@ -12,7 +12,7 @@
                 <h1 class="pull-xs-left">
                     Your Notebooks
                 </h1>
-                 
+
                 <hr/>
                 @if($notes->count() == 0)
                 <div class="alert alert-primary" role="alert">
@@ -20,11 +20,11 @@
                 </div>
                 @endif
 
-               
+
                 <br>
-                
-               
-                    
+
+
+
                 <div class="row">
                     @foreach ($notes as $noteObj)
                     @if($noteObj->trashed())
@@ -34,19 +34,19 @@
                                 <a href="{{ route('notebooks.show',$noteObj->id) }}">
                                     <h4 class="card-title">
                                         {{ $noteObj->name }}
-                     
+
                                     </h4>
                                 </a>
                             </div>
                             <a href="#">
-                                <img alt="Responsive image" class="img-fluid" src="{{ asset('dist/img/notebook-del.jpg') }}"/>
+                                <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
                             </a>
                             <div class="card-block pt-2">
-                                
-                                
-                                
+
+
+
                             <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled/>
-                              
+
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                 </a>
                             </div>
                             <a href="#">
-                                <img alt="Responsive image" class="img-fluid" src="{{ asset('dist/img/notebook.jpg') }}"/>
+                                <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
                             </a>
                             <div class="card-block pt-2">
                                 <a class="card-link" href="{{ route('notebooks.edit',$noteObj->id) }}">
