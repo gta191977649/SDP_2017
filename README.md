@@ -12,3 +12,5 @@
 - Added fontawesome icons to make it a bit snazzy
 - Removed Default laravel homepage
 - Did some text formatting (editor automatically did it? (ATOM Editor))
+- Added REMOVED on deleted notebooks (for later implementation will replace with HIDDEN/DELETED)
+- Changed the styling to include the Edit button in the top part of the title

@@ -20,10 +20,7 @@
             </div>
         @endif
 
-
         <br>
-
-
 
         <div class="row">
             @foreach ($notes as $noteObj)
@@ -32,12 +29,14 @@
                         <div class="card p-2">
                             <div class="card-block">
                                 <a href="{{ route('notebooks.show',$noteObj->id) }}">
-                                    <h4 class="card-title">
+                                    <h4 class="notebook-title">
                                         {{ $noteObj->name }}
 
                                     </h4>
                                 </a>
-                                 DELETED
+                                 <div class="card-link2">
+                                     REMOVED
+                                 </div>
                             </div>
                             <a href="#">
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
@@ -48,18 +47,19 @@
                         </div>
                     </div>
                 @else
-
                     <div class="col-sm-6 col-md-3 ">
                         <div class="card p-2">
                             <div class="card-block">
-                                <a class="card-title" href="{{ route('notebooks.show',$noteObj->id) }}">
-                                    <h4 >
+
+                                <a  href="{{ route('notebooks.show',$noteObj->id) }}">
+                                    <h4 class="notebook-title">
                                         {{ $noteObj->name }}
                                     </h4>
                                 </a>
-                                <a class="pull-xs-right5 card-link " href="{{ route('notebooks.edit',$noteObj->id) }}">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit Notebook
+                                <a class="pull-right card-edit-link " href="{{ route('notebooks.edit',$noteObj->id) }}">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit
                                 </a>
+
                             </div>
                             <a href="#">
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
