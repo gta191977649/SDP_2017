@@ -78,7 +78,7 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+    <script src="https://use.fontawesome.com/c48d3cddbd.js"></script>
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <!-- <script src="{{ asset('js/jquery3.min.js') }}"></script> -->
     <script src="{{ asset('js/popper.min.js') }}"></script>
