@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>NoteBook App</title>
-   
-    <link rel="stylesheet" href="{{asset('dist/css/main.css')}}">
-    <link rel="stylesheet" href="{{asset('dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
 
 </head>
 
@@ -20,7 +19,7 @@
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="nav_menu">
-            
+
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     @if(Auth::user())
@@ -41,15 +40,15 @@
                     @endif
                 </li>
             </ul>
-           
+
         </div>
     </nav>
-    
+
         <!-- Old nav
         <nav class="navbar  navbar-dark bg-primary">
             <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
                 &#9776;
-            </button> 
+            </button>
             @if(Auth::user())
                {{ Auth::user()->name }}
                 @else
@@ -57,13 +56,13 @@
             @endif
              <a class="navbar-brand justify-content-end" href="{{ route('index') }}">NoteBook App</a>
             <div class="collapse navbar-collapse" id="nav_menu">
-                
+
             </div>
         </nav>
         -->
         <!-- /navbar -->
         <!-- Main component for call to action -->
-        
+
         @yield('content')<!-- 自定义内容 -->
     </div>
     {{--
@@ -75,15 +74,15 @@
     </footer>
     --}}
     <!-- Js Stuff -->
-    
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+    <script src="https://use.fontawesome.com/c48d3cddbd.js"></script>
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <!-- <script src="{{ asset('dist/js/jquery3.min.js') }}"></script> -->
-    <script src="{{ asset('dist/js/popper.min.js') }}"></script>
-    <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
-
+    <!-- <script src="{{ asset('js/jquery3.min.js') }}"></script> -->
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
 
 </body>
 

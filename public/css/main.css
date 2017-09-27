@@ -17,23 +17,39 @@ body {
 	padding-top: 50px;
 	padding-left: 30px;
 }
+.notebook{
+	margin-bottom: 10px;
+}
 .notes-group{
 	/*margin-top: 10px;*/
 	padding-top: 50px;
 }
 
-/*.notebook-title{
-	text-align: center;
-	padding: 10px 0 7px 15px;
-}*/
-
+.notebook-title{
+	float:left;
+}
+.card-edit-link{
+	width: 20%;
+	float: right;
+	margin-right: 0;
+	margin-top: 5px;
+}
+.card-link2{
+	width: 35%;
+	float: right;
+	margin-right: 0;
+	margin-top: 5px;
+}
 .navholder{
 	color: white;
 	top: 6px;
     position: relative;
-
 }
 
+
+.card-block{
+	display: inline-block !important;
+}
 .navholder:hover{
 	text-decoration: none;
 	color: white;
@@ -46,9 +62,13 @@ body {
 	height: 60px;
 	background-color: #f5f5f5;
   }
-  
+
 
 a>img{
 	width: 238px;
 }
 
+/*
+.notebook-hidden{
+	display: none;
+}*/
