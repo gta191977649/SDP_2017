@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>NoteBook App</title>
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
         <!-- Angular JS -->
         <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
@@ -41,7 +42,7 @@
                         <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
                         @endif
                     </ul>
-                </span>      
+                </span>
             </nav>
         </div>
         <div class="container">
@@ -83,6 +84,7 @@
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <!-- <script src="{{ asset('js/jquery3.min.js') }}"></script> -->
         <script src="{{ asset('js/popper.min.js') }}"></script>
+        <script src="{{ asset('js/jquery-ui.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
         

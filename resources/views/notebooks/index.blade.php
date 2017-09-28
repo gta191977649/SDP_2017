@@ -26,7 +26,7 @@
                         <div class="card p-2">
                             <div class="card-block">
 
-                                <a  href="{{ route('notebooks.show',$noteObj->id) }}">
+                                <a href="{{ route('notebooks.show',$noteObj->id) }}">
                                     <h4 class="notebook-title">
                                         {{ $noteObj->name }}
                                     </h4>
@@ -40,7 +40,6 @@
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
                             </a>
                             <div class="card-block pt-2">
-
                                 <form  action="/notebooks/{{ $noteObj->id }}" class="pull-xs-right5 card-link" method="POST" style="display:inline">
                                     {{ method_field('DELETE') }} <!-- ?? -->
                                     {{ csrf_field() }}
