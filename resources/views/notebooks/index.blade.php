@@ -40,7 +40,6 @@
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
                             </a>
                             <div class="card-block pt-2">
-
                                 <form  action="/notebooks/{{ $noteObj->id }}" class="pull-xs-right5 card-link" method="POST" style="display:inline">
                                     {{ method_field('DELETE') }} <!-- ?? -->
                                     {{ csrf_field() }}

@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>NoteBook App</title>
+          <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
     </head>
@@ -39,7 +40,7 @@
                         <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
                         @endif
                     </ul>
-                </span>      
+                </span>
             </nav>
         </div>
         <div class="container">
@@ -77,6 +78,7 @@
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://use.fontawesome.com/c48d3cddbd.js"></script>
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <!-- <script src="{{ asset('js/jquery3.min.js') }}"></script> -->
