@@ -26,7 +26,7 @@
                         <div class="card p-2">
                             <div class="card-block">
 
-                                <a  href="{{ route('notebooks.show',$noteObj->id) }}">
+                                <a href="{{ route('notebooks.show',$noteObj->id) }}">
                                     <h4 class="notebook-title">
                                         {{ $noteObj->name }}
                                     </h4>
