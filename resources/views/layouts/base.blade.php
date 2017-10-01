@@ -7,7 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>NoteBook App</title>
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
+        <!-- Angular JS -->
+        <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
     </head>
 
     <body>
@@ -24,7 +27,7 @@
                     <ul class="navbar-nav mr-auto">
                         @if(Auth::user())
                         <div class="nav-item dropdown">
-                            <a class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                            <a class="btn btn-primary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#">Profile</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -39,7 +42,7 @@
                         <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
                         @endif
                     </ul>
-                </span>      
+                </span>
             </nav>
         </div>
         <div class="container">
@@ -81,8 +84,10 @@
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
          <script src="{{ asset('js/jquery3.min.js') }}"></script> 
         <script src="{{ asset('js/popper.min.js') }}"></script>
+        <script src="{{ asset('js/jquery-ui.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+        
     </body>
 
 </html>

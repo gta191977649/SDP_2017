@@ -1,6 +1,8 @@
 function togglehidden() {
     $('.notebook-hidden').toggle();
 }
+
+$("#datepicker").datepicker();
 $("a[data-modal='EJ']").click(function () {
     var this_id = $(this).attr('data-id');
     var this_text = $(this).attr('data-text');
