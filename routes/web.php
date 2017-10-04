@@ -21,10 +21,10 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/notebooks','NotebooksController@index')->name('notebooks.index');
     Route::post('/notebooks','NotebooksController@store');
 
-    Route::get('/notebooks/create','NotebooksController@create')->name('notebooks.create');
+    Route::get('/notebooks/create','NotebooksController@loadCreateModal')->name('notebooks.create');
     Route::get('/notebooks/{notebookID}','NotebooksController@show')->name('notebooks.show');
+    Route::get('/notebooks/rename/{id}','NotebooksController@loadEditModal')->name('notebooks.rename');
 
-    Route::get('/notebooks/{notebookID}/edit','NotebooksController@edit')->name('notebooks.edit');
     Route::put('/notebooks/{notebookID}','NotebooksController@update')->name('notebooks.update');
     Route::delete('/notebooks/{notebookID}','NotebooksController@delete');
 
