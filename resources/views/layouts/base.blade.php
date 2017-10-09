@@ -6,12 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Journel</title>
-        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+   
+        
         <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <!-- Angular JS -->
         <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+        
     </head>
 
     <body>
@@ -72,7 +76,7 @@
         <script src="{{ asset('js/popper.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/mdb.min.js') }}"></script>
+        {{--<script src="{{ asset('js/mdb.min.js') }}"></script> --}}
         <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
 
     </body>
