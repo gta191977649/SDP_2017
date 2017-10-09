@@ -2,7 +2,7 @@
 @section('content')
 <!-- /navbar -->
 <!-- Main component for call to action -->
-<div class="container">
+<div class="container-fluid">
 
     <!-- heading -->
     <div class="pull-xs-right float-right">
@@ -100,14 +100,13 @@
     </div>
     <hr/>
     <div class="pull-xs-right float-right">
-        <button class="btn btn-primary" onclick="togglehidden()" role="button">
-            Toggle Hidden Notebooks
-        </button>
+        <button id="hideToggle" class="btn btn-primary" role="button" value="">Show Trashed Journals</button>
     </div>
-    <h2 class="hidden-notebook-title">Hidden or Deleted Journals <span class="value"></span></h2>
+    <h2 class="hidden-notebook-title">Hidden or Deleted Journals</h2>
     <hr/>
-    <div class="row">
+    <div class="animate fadeIn row">
         @foreach ($notes as $noteObj)
+
         @if(($noteObj->trashed()))
         <div class="col-sm-6 col-md-3 notebook notebook-hidden">
             <div class="card p-2">
