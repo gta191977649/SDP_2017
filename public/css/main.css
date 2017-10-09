@@ -15,9 +15,11 @@ main{
 	/*margin-top: 10px;*/
 	padding-top: 50px;
 	padding-left: 30px;
+	
 }
 .notebook{
 	margin-bottom: 10px;
+	float:left;
 }
 .notes-group{
 	/*margin-top: 10px;*/
