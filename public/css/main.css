@@ -44,6 +44,13 @@ main{
 	top: 6px;
     position: relative;
 }
+.navbar-brand{
+	border: 1px solid #82b1ff;
+ 	padding-right: 33px;
+	padding-left: 5px;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
 
 
 .card-block{
@@ -64,7 +71,6 @@ main{
 
 .static{
     position: static;
-
 }
 
 a>img{
@@ -86,4 +92,19 @@ a>img{
 
 #createNote, #deleteNote, #openNote, #editNote{
 	display: none;
+}
+
+.dropdown-item:hover{
+	background-color: #82B1FF!important;
+}
+
+.siteLogo{
+	float:left;
+    height: 30px;
+    width: 30px;
+    background-color: #a5c7ff;
+    margin-right:3px;
+    text-align: center;
+    color:white;
+    border-radius: 5px;
 }
