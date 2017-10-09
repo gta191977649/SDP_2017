@@ -1,6 +1,18 @@
-function togglehidden() {
-    $('.notebook-hidden').toggle();
-}
+let hidden = true;
+
+$("#hideToggle").click(function(){
+    if(hidden){
+        $('.notebook-hidden').fadeToggle( "slow", "linear" );
+        hidden = !hidden;
+        $("#hideToggle").text("Hide Trashed Journals");
+
+    }else{
+        $('.notebook-hidden').fadeToggle( "slow", "linear" );
+        hidden = !hidden;
+        $("#hideToggle").text("Show Trashed Journals");
+    }
+});
+
 
 $("#datepicker").datepicker();
 $("a[data-modal='EJ']").click(function () {
@@ -19,7 +31,7 @@ $("a[data-modal='EJ']").click(function () {
     });
 });
 
-$("button[data-modal='CJ']").click(function () {    
+$("button[data-modal='CJ']").click(function () {
     var base_url = 'notebooks/create';
     $.get(base_url , function (data) {
         $(data).appendTo( "body" );
