@@ -15,9 +15,11 @@ main{
 	/*margin-top: 10px;*/
 	padding-top: 50px;
 	padding-left: 30px;
+	
 }
 .notebook{
 	margin-bottom: 10px;
+	float:left;
 }
 .notes-group{
 	/*margin-top: 10px;*/
@@ -45,11 +47,13 @@ main{
     position: relative;
 }
 .navbar-brand{
-	border: 1px solid #82b1ff;
+	/*border: 1px solid #82b1ff;*/
  	padding-right: 33px;
 	padding-left: 5px;
+	/*
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+	*/
 }
 
 
