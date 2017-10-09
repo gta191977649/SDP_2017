@@ -24,6 +24,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/notebooks/create','NotebooksController@loadCreateModal')->name('notebooks.create');
     Route::get('/notebooks/{notebookID}','NotebooksController@show')->name('notebooks.show');
     Route::get('/notebooks/rename/{id}','NotebooksController@loadEditModal')->name('notebooks.rename');
+    Route::post('/notebooks/search','NotebooksController@search')->name('notebooks.search');
 
     Route::put('/notebooks/{notebookID}','NotebooksController@update')->name('notebooks.update');
     Route::delete('/notebooks/{notebookID}','NotebooksController@delete');

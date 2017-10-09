@@ -1,8 +1,21 @@
-function togglehidden() {
-    $('.notebook-hidden').toggle();
+
+$('#searchCollapse').hide(); 
+
+function showsearch(){
+	$('#searchCollapse').slideToggle(500, function() {
+		if($('#searchCollapse').is(":visible"))
+		{
+			$('#slideBtn').innerHTML ='<i id="slideIcon" class="fa fa-caret-up" aria-hidden="true"></i>';
+		}else{
+			$('#slideBtn').innerHTML ='<i id="slideIcon" class="fa fa-caret-down" aria-hidden="true"></i>';
+		}
+	});
+	
 }
 
-$("#datepicker").datepicker();
+
+$(".datepicker").datepicker();
+$(".datepicker").datepicker();
 $("a[data-modal='EJ']").click(function () {
     var this_id = $(this).attr('data-id');
     var this_text = $(this).attr('data-text');
