@@ -2,11 +2,10 @@ html {
 	position: relative;
 	min-height: 100%;
 }
-body {
-	/* Margin bottom by footer height */
-	margin-bottom: 60px;
-}
 
+main{
+	  margin-bottom: 60px;
+}
 
 .navbar {
   margin-bottom: 20px;
@@ -35,7 +34,7 @@ body {
 	margin-top: 4px;
 }
 .card-link2{
-	width: 35%;
+	width: 37%;
 	float: right;
 	margin-right: 0;
 	margin-top: 5px;
@@ -55,14 +54,18 @@ body {
 	color: white;
 }
 .footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	height: 60px;
-	background-color: #f5f5f5;
-  }
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
 
+.static{
+    position: static;
+
+}
 
 a>img{
 	width: 238px;
@@ -70,5 +73,17 @@ a>img{
 
 
 .notebook-hidden{
+	display: none;
+}
+
+.center-text{
+	text-align: center;
+}
+
+#createJournal, #deleteJournal, #openJournal, #editJournal{
+	display: none;
+}
+
+#createNote, #deleteNote, #openNote, #editNote{
 	display: none;
 }

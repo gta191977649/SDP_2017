@@ -54,7 +54,10 @@
                 @yield('content')<!-- 自定义内容 -->
             </div>
         </main>
-        <footer>
+        <footer class="footer">
+            <div class="container">
+                <div class="text-muted">©JournalApp 2017 | Powered by <a class="footer-link" href="https://laravel.com">Laravel</a> | <a class="footer-link" href="{{route('help')}}">Help</a></div>
+            </div>
 
         </footer>
 
