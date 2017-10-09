@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>NoteBook App</title>
+        <title>Journel</title>
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
         <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
@@ -21,8 +21,8 @@
                     <div class="container">
                         <div class="navbar-header">
                             <a class="navbar-brand" href="{{ route('index') }}">
-                                <div class="siteLogo">N</div>
-                                Notebooker
+                                <div class="siteLogo">J</div>
+                                Journel
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -57,7 +57,7 @@
         </main>
         <footer class="footer">
             <div class="container">
-                <div class="text-muted">©JournalApp 2017 | Powered by <a class="footer-link" href="https://laravel.com">Laravel</a> | <a class="footer-link" href="{{route('help')}}">Help</a></div>
+                <div class="text-muted">©Journal 2017 | Powered by <a class="footer-link" href="https://laravel.com">Laravel</a> | <a class="footer-link" href="{{route('help')}}">Help</a></div>
             </div>
 
         </footer>
