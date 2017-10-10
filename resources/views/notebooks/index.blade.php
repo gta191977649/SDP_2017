@@ -4,7 +4,7 @@
     <!-- Main component for call to action -->
     <div class="container-fluid">
         <!-- heading -->
-        <div class="pull-xs-right pull-right">
+        <div id="newJournalButton" class="pull-xs-right fl-right">
             <button type="button" class="btn btn-primary" data-modal="CJ">+ New Journal</button>
         </div>
         <h1 class="pull-xs-left">
@@ -30,7 +30,7 @@
                                         {{ $noteObj->name }}
                                     </h4>
                                 </a>
-                                <a href="#" class="pull-right mt-1" data-toggle="modal" data-modal="EJ" data-id="{{ $noteObj->id }}" data-text="{{ $noteObj->name }}">
+                                <a href="#" class="fl-right mt-1" data-toggle="modal" data-modal="EJ" data-id="{{ $noteObj->id }}" data-text="{{ $noteObj->name }}">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> Edit
                                 </a>
                             </div>
@@ -38,10 +38,15 @@
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
                             </a>
                             <div class="card-block pt-2">
-                                <form action="/notebooks/{{ $noteObj->id }}" class="pull-right card-link" method="POST" style="display:inline">
+                                <button href="" class="btn btn-sm btn-secondary mx-auto " type="submit" value="Hide" onclick="event.preventDefault(); document.getElementById('hideJournal').submit();"><i class="fa fa-eye-slash" aria-hidden="true"></i> Hide</button>
+                                <button href="" class="btn btn-sm red mx-auto fl-right" type="submit" value="Delete" onclick="event.preventDefault(); document.getElementById('deleteJournal').submit();"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                <form id="deleteJournal" action="/notebooks/{{ $noteObj->id }}" class="fl-right card-link" method="POST" style="display:inline">
                                     {{ method_field('DELETE') }} <!-- ?? -->
                                     {{ csrf_field() }}
-                                    <button class="btn btn-sm red pull-right" type="submit" value="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                </input>
+                                <form id="hideJournal" action="/notebooks/{{ $noteObj->id }}" class="fl-right card-link" method="POST" style="display:inline">
+                                    {{ method_field('DELETE') }} <!-- ?? -->
+                                    {{ csrf_field() }}
                                 </input>
                             </form>
                         </div>
@@ -75,7 +80,7 @@
                                         </h4>
                                     </a>
 
-                                    <span class="badge badge-danger pull-right mt-1">REMOVED</span>
+                                    <span class="badge badge-danger fl-right mt-1">REMOVED</span>
                                 </div>
                                 <a href="#">
                                     <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>

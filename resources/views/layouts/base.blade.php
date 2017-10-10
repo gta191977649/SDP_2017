@@ -6,9 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Journel</title>
-
-
         <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
@@ -70,7 +69,6 @@
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-        <script src="https://use.fontawesome.com/c48d3cddbd.js"></script>
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
          <script src="{{ asset('js/jquery3.min.js') }}"></script>
         <script src="{{ asset('js/popper.min.js') }}"></script>
