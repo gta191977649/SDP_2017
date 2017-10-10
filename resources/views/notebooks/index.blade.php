@@ -12,9 +12,10 @@
         </h1>
 
         <hr/>
-        @if($notes->count() == 0)
+        @if($notes->where("deleted_at",NULL)->count() == 0)
             <div class="alert alert-primary" role="alert">
                 You have no Journals.
+                
             </div>
         @endif
     <div class="row">
