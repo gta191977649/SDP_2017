@@ -39,7 +39,7 @@
 
     <div class="pull-xs-right float-right">
         @if($notebook->trashed())
-        <a class="btn btn-primary disabled" href="{{ route('notes.createNote',$notebook->id) }}" role="button" disabled>
+            <a class="btn btn-blue-grey disabled" href="{{ route('notes.createNote',$notebook->id) }}" role="button" disabled>
             New Note +
         </a>
         @else
@@ -47,7 +47,7 @@
             New Note +
         </a>
         @endif
-
+            <a class="btn btn-red" href="{{route('index')}}"> Back</a>
     </div>
 
     <h1 class="pull-xs-left">

@@ -2,11 +2,10 @@ html {
 	position: relative;
 	min-height: 100%;
 }
-body {
-	/* Margin bottom by footer height */
-	margin-bottom: 60px;
-}
 
+main{
+	  margin-bottom: 60px;
+}
 
 .navbar {
   margin-bottom: 20px;
@@ -16,9 +15,11 @@ body {
 	/*margin-top: 10px;*/
 	padding-top: 50px;
 	padding-left: 30px;
+	
 }
 .notebook{
 	margin-bottom: 10px;
+	float:left;
 }
 .notes-group{
 	/*margin-top: 10px;*/
@@ -35,7 +36,7 @@ body {
 	margin-top: 4px;
 }
 .card-link2{
-	width: 35%;
+	width: 37%;
 	float: right;
 	margin-right: 0;
 	margin-top: 5px;
@@ -44,6 +45,15 @@ body {
 	color: white;
 	top: 6px;
     position: relative;
+}
+.navbar-brand{
+	/*border: 1px solid #82b1ff;*/
+ 	padding-right: 33px;
+	padding-left: 5px;
+	/*
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+	*/
 }
 
 
@@ -55,14 +65,17 @@ body {
 	color: white;
 }
 .footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	height: 60px;
-	background-color: #f5f5f5;
-  }
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
 
+.static{
+    position: static;
+}
 
 a>img{
 	width: 238px;
@@ -71,4 +84,31 @@ a>img{
 
 .notebook-hidden{
 	display: none;
+}
+
+.center-text{
+	text-align: center;
+}
+
+#createJournal, #deleteJournal, #openJournal, #editJournal{
+	display: none;
+}
+
+#createNote, #deleteNote, #openNote, #editNote{
+	display: none;
+}
+
+.dropdown-item:hover{
+	background-color: #82B1FF!important;
+}
+
+.siteLogo{
+	float:left;
+    height: 30px;
+    width: 30px;
+    background-color: #a5c7ff;
+    margin-right:3px;
+    text-align: center;
+    color:white;
+    border-radius: 5px;
 }

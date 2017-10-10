@@ -36,6 +36,9 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('notes/{notebookID}/createNote','NotesController@createNote')->name('notes.createNote');
 });
 
+//Made the help page in the base controller, idk why tho
+Route::get('/help','Controller@help')->name('help');
+
 //Session Test
 Route::get('/session/set/{data}','SessionController@setSession');
 Route::get('/session/show','SessionController@getSession');

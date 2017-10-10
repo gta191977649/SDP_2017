@@ -1,5 +1,6 @@
 
 $('#searchCollapse').hide(); 
+        $('.notebook-hidden').slideToggle( "slow", "linear" );
 
 function showsearch(){
 	$('#searchCollapse').slideToggle(500, function() {
@@ -45,3 +46,15 @@ $("button[data-modal='CJ']").click(function () {
         });
     });
 });
+
+$(document).ready(function() {
+    // Check if body height is higher than window height :)
+
+    if (($("body").height() > $(window).height())) {
+        $("footer").addClass("static");
+    }
+});
+
+function showElement(element){
+    $(element).slideToggle();
+}

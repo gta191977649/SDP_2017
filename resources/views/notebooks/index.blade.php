@@ -1,20 +1,19 @@
 @extends('layouts/base')
 @section('content')
-<!-- /navbar -->
-<!-- Main component for call to action -->
-<div class="container-fluid">
+    <!-- /navbar -->
+    <!-- Main component for call to action -->
+    <div class="container-fluid">
 
-    <!-- heading -->
-    <div class="pull-xs-right float-right">
-        <button type="button" id="slideBtn" class="btn btn-primary" onclick="showsearch()">
+        <!-- heading -->
+        <div class="pull-xs-right float-right">
             <i id="slideIcon" class="fa fa-search" aria-hidden="true"></i> Search</button>
-        <button type="button" class="btn btn-primary" data-modal="CJ">+ New Notebook</button>
-    </div>
-    <h1 class="pull-xs-left">
-        Your Journals
-    </h1>
+		<button type="button" class="btn btn-primary" data-modal="CJ">+ New Journal</button>
+        </div>
+        <h1 class="pull-xs-left">
+            Your Journals
+        </h1>
 
-    <hr/>
+        <hr/>
     <!-- SEARCH BAR AREA -->	
     <div class="row">
         <div class="col-sm-3"></div>
@@ -60,77 +59,86 @@
         </div>
     </div>
     <hr />
-    @if($notes->count() == 0)
-    <div class="alert alert-primary" role="alert">
-        You have no notebooks.
-    </div>
-    @endif
-    <div class="row">
-        @foreach ($notes as $noteObj)
-        @if(!($noteObj->trashed()))
-        <div class="col-sm-6 col-md-3 notebook">
-            <div class="card p-2">
-                <div class="card-block">
-
-                    <a  href="{{ route('notebooks.show',$noteObj->id) }}">
-                        <h4 class="notebook-title">
-                            {{ $noteObj->name }}
-                        </h4>
-                    </a>
-                    <a href="#" class="pull-right card-edit-link " data-toggle="modal" data-modal="EJ" data-id="{{ $noteObj->id }}" data-text="{{ $noteObj->name }}">
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </a>
-
-                </div>
-                <a href="#">
-                    <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
-                </a>
-                <div class="card-block pt-2">
-                    <form  action="/notebooks/{{ $noteObj->id }}" class="pull-xs-right5 card-link" method="POST" style="display:inline">
-                        {{ method_field('DELETE') }} <!-- ?? -->
-                        {{ csrf_field() }}
-                        <input class="btn btn-sm btn-danger float-right" type="submit" value="Delete">
-                        </input>
-                    </form>
-                </div>
+        @if($notes->count() == 0)
+            <div class="alert alert-primary" role="alert">
+                You have no Journals.
             </div>
-        </div>
         @endif
-        @endforeach
-    </div>
-    <hr/>
-    <div class="pull-xs-right float-right">
-        <button id="hideToggle" class="btn btn-primary" role="button" value="">Show Trashed Journals</button>
-    </div>
-    <h2 class="hidden-notebook-title">Hidden or Deleted Journals</h2>
-    <hr/>
-    <div class="animate fadeIn row">
-        @foreach ($notes as $noteObj)
+    <div class="row">
+        <div class="col-12">
+            @foreach ($notes as $noteObj)
+                @if(!($noteObj->trashed()))
+                    <div class="col-sm-6 col-md-3 notebook">
+                        <div class="card p-2">
+                            <div class="card-block">
 
-        @if(($noteObj->trashed()))
-        <div class="col-sm-6 col-md-3 notebook notebook-hidden">
-            <div class="card p-2">
-                <div class="card-block">
-                    <a href="{{ route('notebooks.show',$noteObj->id) }}">
-                        <h4 class="notebook-title">
-                            {{ $noteObj->name }}
-                        </h4>
-                    </a>
-                    <div class="card-link2">
-                        REMOVED
+                                <a  class="" href="{{ route('notebooks.show',$noteObj->id) }}">
+                                    <h4 class="notebook-title">
+                                        {{ $noteObj->name }}
+                                    </h4>
+                                </a>
+                                <a href="#" class="card-edit-link " data-toggle="modal" data-modal="EJ" data-id="{{ $noteObj->id }}" data-text="{{ $noteObj->name }}">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+
+                            </div>
+                            <a href="#">
+                                <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
+                            </a>
+                            <div class="card-block pt-2">
+                                <form  action="/notebooks/{{ $noteObj->id }}" class="pull-xs-right5 card-link" method="POST" style="display:inline">
+                                    {{ method_field('DELETE') }} <!-- ?? -->
+                                    {{ csrf_field() }}
+                                    <input class="btn btn-sm btn-danger float-right" type="submit" value="Delete">
+                                </input>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <a href="#">
-                    <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
-                </a>
-                <div class="card-block pt-2">
-                    <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled/>
-                </div>
-            </div>
+            @endif
+        @endforeach
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <hr/>
+                <h2 class="hidden-notebook-title pull-xs-left">Hidden or Deleted Journals <button id="hideToggle" class="btn btn-primary" role="button" value="">Show Trashed Journals</button></h2>
+            <hr/>
         </div>
 
-        @endif
-        @endforeach
+
+        <div class="col-12">
+            <div class="notebook-hidden">
+                @foreach ($notes as $noteObj)
+
+                    @if(($noteObj->trashed()))
+                        <div class="col-3 notebook ">
+                            <div class="card p-2">
+                                <div class="card-block">
+                                    <a href="{{ route('notebooks.show',$noteObj->id) }}">
+                                        <h4 class="notebook-title">
+                                            {{ $noteObj->name }}
+                                        </h4>
+                                    </a>
+                                    <div class="card-link2">
+                                        REMOVED
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
+                                </a>
+                                <div class="card-block pt-2">
+                                    <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled/>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endif
+                @endforeach
+            </div>
+
     </div>
 </div>
 <!-- /container -->
