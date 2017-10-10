@@ -4,7 +4,7 @@
     <!-- Main component for call to action -->
     <div class="container-fluid">
         <!-- heading -->
-        <div class="pull-xs-right float-right">
+        <div class="pull-xs-right pull-right">
             <button type="button" class="btn btn-primary" data-modal="CJ">+ New Journal</button>
         </div>
         <h1 class="pull-xs-left">
@@ -42,7 +42,7 @@
                                 <form action="/notebooks/{{ $noteObj->id }}" class="pull-right card-link" method="POST" style="display:inline">
                                     {{ method_field('DELETE') }} <!-- ?? -->
                                     {{ csrf_field() }}
-                                    <input class="btn btn-sm red float-right" type="submit" value="Delete">
+                                    <input class="btn btn-sm red pull-right" type="submit" value="Delete">
                                 </input>
                             </form>
                         </div>
@@ -82,9 +82,7 @@
                                 <a href="#">
                                     <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
                                 </a>
-                                <div class="card-block pt-2">
-                                    <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled/>
-                                </div>
+                                <div class="card-block pt-2"></div>
                             </div>
                         </div>
 

@@ -3,7 +3,7 @@
 @section('content')
     <!-- Main component for call to action -->
     <div class="container">
-        <div class="pull-xs-right float-right">
+        <div class="pull-xs-right pull-right">
             @if($notebook->trashed())
             <a class="btn btn-blue-grey disabled" href="{{ route('notes.createNote',$notebook->id) }}" role="button" disabled>
                 New Note +
@@ -37,7 +37,7 @@
             <!-- Deal with deleted item here -->
                 <div class="card">
                     <div class="card-body">
-                    <div class="float-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
+                    <div class="pull-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
                     <a href="">
 
                         <h4 class="card-title ">
@@ -53,7 +53,7 @@
                     <hr/>
 
 
-                        <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled>
+                        <input class="btn btn-sm btn-danger pull-right" type="submit" value="Deleted" disabled>
                         <a class="card-link" href="{{ route('notes.history',$notesObj->id) }}">History</a>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
             @else
                 <div class="card">
                     <div class="card-body">
-                    <div class="float-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
+                    <div class="pull-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
                     <a href="">
 
                         <h4 class="card-title">
@@ -78,7 +78,7 @@
                     <form class="pull-right" action="{{ route('notes.destroy',$notesObj->id) }}" method="POST">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
-                        <input class="btn btn-sm btn-danger float-right" type="submit" value="Delete">
+                        <input class="btn btn-sm btn-danger pull-right" type="submit" value="Delete">
                     </form>
                         <a class="card-link" href="{{ route('notes.edit',$notesObj->id) }}">Edit</a>
                         <a class="card-link" href="{{ route('notes.history',$notesObj->id) }}">History</a>
