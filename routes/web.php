@@ -32,13 +32,14 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::resource('notes','NotesController');
     Route::get('notes/{note}/history/','NotesController@showHistory')->name('notes.history');
+    Route::get('notes/{note}/history/','NotesController@showHistory')->name('notes.history');
 
     Route::get('notes/{notebookID}/createNote','NotesController@createNote')->name('notes.createNote');
+    Route::post('notes/{notebookID}/search','NotebooksController@searchEntry')->name('notes.search');
 });
 
 //Made the help page in the base controller, idk why tho
 Route::get('/help','Controller@help')->name('help');
-
 //Session Test
 Route::get('/session/set/{data}','SessionController@setSession');
 Route::get('/session/show','SessionController@getSession');
