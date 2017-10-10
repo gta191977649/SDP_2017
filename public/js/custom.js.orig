@@ -1,0 +1,78 @@
+
+<<<<<<< HEAD
+$('#searchCollapse').hide(); 
+
+function showsearch(){
+	$('#searchCollapse').slideToggle(500, function() {
+		if($('#searchCollapse').is(":visible"))
+		{
+			$('#slideBtn').innerHTML ='<i id="slideIcon" class="fa fa-caret-up" aria-hidden="true"></i>';
+		}else{
+			$('#slideBtn').innerHTML ='<i id="slideIcon" class="fa fa-caret-down" aria-hidden="true"></i>';
+		}
+	});
+	
+}
+=======
+$("#hideToggle").click(function(){
+    if(hidden){
+        $('.notebook-hidden').slideToggle( "slow", "linear" );
+        hidden = !hidden;
+        $("#hideToggle").text("Hide Trashed Journals");
+
+    }else{
+        $('.notebook-hidden').slideToggle( "slow", "linear" );
+        hidden = !hidden;
+        $("#hideToggle").text("Show Trashed Journals");
+    }
+});
+>>>>>>> a5517fa7c2a92ef7b220b71c830564228059ec98
+
+
+$(".datepicker").datepicker();
+$(".datepicker").datepicker();
+$("a[data-modal='EJ']").click(function () {
+    var this_id = $(this).attr('data-id');
+    var this_text = $(this).attr('data-text');
+    var base_url = 'notebooks/rename/';
+    $.get(base_url + this_id , function (data) {
+        $(data).appendTo( "body" );
+        $('#myModal').modal();
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myModal .load_modal').html(data);
+        });
+        $('#myModal').on('hidden.bs.modal', function () {
+            $('#myModal .modal-body').data('');
+        });
+    });
+});
+
+$("button[data-modal='CJ']").click(function () {    
+    var base_url = 'notebooks/create';
+    $.get(base_url , function (data) {
+        $(data).appendTo( "body" );
+        $('#createJournalModal').modal();
+        $('#createJournalModal').on('shown.bs.modal', function () {
+            $('#createJournalModal .load_modal').html(data);
+        });
+        $('#createJournalModal').on('hidden.bs.modal', function () {
+            $('#createJournalModal .modal-body').data('');
+        });
+    });
+<<<<<<< HEAD
+});
+=======
+});
+
+$(document).ready(function() {
+    // Check if body height is higher than window height :)
+
+    if (($("body").height() > $(window).height())) {
+        $("footer").addClass("static");
+    }
+});
+
+function showElement(element){
+    $(element).slideToggle();
+}
+>>>>>>> a5517fa7c2a92ef7b220b71c830564228059ec98
