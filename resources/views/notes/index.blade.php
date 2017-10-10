@@ -51,9 +51,6 @@
                     </p>
 
                     <hr/>
-
-
-                        <input class="btn btn-sm btn-danger pull-right" type="submit" value="Deleted" disabled>
                         <a class="card-link" href="{{ route('notes.history',$notesObj->id) }}">History</a>
                     </div>
                 </div>
