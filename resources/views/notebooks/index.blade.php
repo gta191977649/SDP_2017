@@ -6,6 +6,7 @@
 
         <!-- heading -->
         <div class="pull-xs-right float-right">
+            <button type="button" class="btn btn-primary" onclick="showsearch()">
             <i id="slideIcon" class="fa fa-search" aria-hidden="true"></i> Search</button>
 		<button type="button" class="btn btn-primary" data-modal="CJ">+ New Journal</button>
         </div>
@@ -57,8 +58,8 @@
                 </div>
             </div>
         </div>
-    </div>
     <hr />
+    </div>
         @if($notes->count() == 0)
             <div class="alert alert-primary" role="alert">
                 You have no Journals.
