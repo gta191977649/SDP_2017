@@ -75,7 +75,7 @@
 
                     <hr/>
 
-                    <form action="{{ route('notes.destroy',$notesObj->id) }}" method="POST">
+                    <form class="pull-right" action="{{ route('notes.destroy',$notesObj->id) }}" method="POST">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                         <input class="btn btn-sm btn-danger float-right" type="submit" value="Delete">

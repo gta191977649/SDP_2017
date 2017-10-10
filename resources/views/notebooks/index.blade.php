@@ -39,10 +39,10 @@
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
                             </a>
                             <div class="card-block pt-2">
-                                <form  action="/notebooks/{{ $noteObj->id }}" class="pull-xs-right5 card-link" method="POST" style="display:inline">
+                                <form action="/notebooks/{{ $noteObj->id }}" class="pull-right card-link" method="POST" style="display:inline">
                                     {{ method_field('DELETE') }} <!-- ?? -->
                                     {{ csrf_field() }}
-                                    <input class="btn btn-sm btn-danger float-right" type="submit" value="Delete">
+                                    <input class="btn btn-sm red float-right" type="submit" value="Delete">
                                 </input>
                             </form>
                         </div>
