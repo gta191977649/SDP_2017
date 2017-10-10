@@ -14,7 +14,7 @@
             </button>
         </div>
         <div class="modal-body">
-            The body cannot be empty !
+            The body or title or reason cannot be empty or all space !
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
@@ -27,7 +27,7 @@
     {{ csrf_field() }}
         <div class="form-group">
             <label for"title">Note Title</label>
-            <input class="form-control" type="text" name="title" required>  
+            <input class="form-control" type="text" name="title" id="title" required>  
         </div>
         <div class="form-group">
             <label for"body">Note Body</label>
@@ -37,6 +37,10 @@
 
         </div>
         <input type="hidden" name="notebook_id" value="{{ $id }}">
+        <div class="form-group">
+            <label>Reason for mofification / creation:</label>
+            <textarea class="form-control" type="text" name="reason" id="reason"  rows="2" required></textarea>
+        </div>
         <input class="btn btn-primary" type="submit" value ="Add" >
         <script>
             function validateForm()
@@ -46,6 +50,13 @@
                     $('#myModal').modal('show')
                     return false;
                 }
+
+                if ( $.trim( $('#title').val() ) == '' || $.trim( $('#reason').val() ) == '')
+                {
+                    $('#myModal').modal('show')
+                    return false;
+                }
+
             }
         </script>
     </form>
