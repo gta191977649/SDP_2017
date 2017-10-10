@@ -42,7 +42,7 @@
 
                         <h4 class="card-title ">
                             {{ $notesObj->noterecords->last()['title'] }}
-                            <span class="badge badge-secondary">Deleted Item</span>
+                            <span class="badge badge-danger">Deleted Item</span>
 
                         </h4>
                     </a>

@@ -30,10 +30,9 @@
                                         {{ $noteObj->name }}
                                     </h4>
                                 </a>
-                                <a href="#" class="card-edit-link " data-toggle="modal" data-modal="EJ" data-id="{{ $noteObj->id }}" data-text="{{ $noteObj->name }}">
+                                <a href="#" class="pull-right mt-1" data-toggle="modal" data-modal="EJ" data-id="{{ $noteObj->id }}" data-text="{{ $noteObj->name }}">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> Edit
                                 </a>
-
                             </div>
                             <a href="#">
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
@@ -42,7 +41,7 @@
                                 <form action="/notebooks/{{ $noteObj->id }}" class="pull-right card-link" method="POST" style="display:inline">
                                     {{ method_field('DELETE') }} <!-- ?? -->
                                     {{ csrf_field() }}
-                                    <input class="btn btn-sm red pull-right" type="submit" value="Delete">
+                                    <button class="btn btn-sm red pull-right" type="submit" value="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                 </input>
                             </form>
                         </div>
@@ -75,9 +74,8 @@
                                             {{ $noteObj->name }}
                                         </h4>
                                     </a>
-                                    <div class="card-link2">
-                                        REMOVED
-                                    </div>
+
+                                    <span class="badge badge-danger pull-right mt-1">REMOVED</span>
                                 </div>
                                 <a href="#">
                                     <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
