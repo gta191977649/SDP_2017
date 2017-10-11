@@ -38,7 +38,7 @@
                @if(Auth::user())
                <ul class="nav navbar-nav ml-auto">
                   <div class="nav-item dropdown">
-                     <a class="btn btn-light-blue dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}</a>
+                     <a class="btn btn-light-blue dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style="color:white;"><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}</span></a>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ route('ucp.index') }}">Profile</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
