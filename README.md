@@ -7,7 +7,6 @@
  - Composer
  - Node
  - GIT
- -
 
 ### How to Deploy
 1. Install your preferred website engine such as Nginx or Apache
