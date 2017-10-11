@@ -1,16 +1,37 @@
-## Todo List
+#JournalApp
 
-- Fix the things yo?
+## Linux or Mac
+### Requirements
+ - Nginx or Apache
+ - PHP 7.1+
+ - Composer
+ - Node
+ - GIT
+ -
 
-## Changelog (25/09/2017) - Idris
+### How to Deploy
+1. Install your preferred website engine such as Nginx or Apache
+2. Install PHP
+3. Install Composer
+4. Clone this repo to the directory you want
+5. Open a terminal in the directory you just cloned
+6. Type' Composer Install' and let it install all the dependencies
+7. Type 'NPM Install' and let it install all the 'node_modules'
+8. now type php artisan serve and let it Requirements
 
-- Did some cleaning, Moved the contents of public/dist to their appropriate folders in the public directory
-- Fixed the links between the templates and the moved files
-- Fixed some spelling errors
-- Rename the App from Laravel to JournalApp
-- Changed the redirection homepage to display the list of notebooks instead of a button
-- Added fontawesome icons to make it a bit snazzy
-- Removed Default laravel homepage
-- Did some text formatting (editor automatically did it? (ATOM Editor))
-- Added REMOVED on deleted notebooks (for later implementation will replace with HIDDEN/DELETED)
-- Changed the styling to include the Edit button in the top part of the title
+You should now have a running JournalApp, accessible by localhost:8000 or any custom domain you have setup.
+
+
+## Windows
+### Requirements
+ - Laragon
+
+### How to Deploy
+1. Right click Laragon icon in the task tray and click quick create -> Laravel and name it JournalApp
+2. When the project is newly setup delete all contents in the <laragon_dir>/www/JournalApp directory but keep the folder named JournalApp
+3. Clone this repo into the <laragon_dir>/www/JournalApp directory
+4. Once Cloned, open the terminal by pressing Ctrl+Alt+T
+5. When the terminal opens navigate to the directory
+6. While the terminal is open and you are in the JournalApp Directory type 'Composer Install'
+7. After composer is done installing the required dependencies type 'NPM Install' and let it install the node_modules
+8. Open your browser and go to JournalApp.dev (assuming you haven't modified laragon config.).
