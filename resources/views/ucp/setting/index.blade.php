@@ -17,8 +17,6 @@
             <select class="form-control" id="theme" name="theme">
             <option value="0">Material Design (default)</option>
             <option value="1">Dark</option>
-     
-            
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Apply</button>
