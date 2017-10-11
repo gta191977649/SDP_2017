@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Journel</title>
+        <title>Journal</title>
         <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -25,7 +25,7 @@
                         <div class="navbar-header">
                             <a class="navbar-brand" href="{{ route('index') }}">
                                 <div class="siteLogo">J</div>
-                                Journel
+                                Journal
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
