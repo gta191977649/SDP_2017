@@ -38,7 +38,8 @@ class NotesController extends Controller
     public function store(Request $request)
     {
         //
-        $data = $request->all();
+        //return $request->all();
+       // $data = $request->all();
         
         //Note::create($data);
         //Create a note base data
@@ -49,7 +50,8 @@ class NotesController extends Controller
         NoteRecord::create([
             'title' => $request->title,
             'body' => $request->body,
-            'note_id' => $note->id
+            'note_id' => $note->id,
+            'reason' => $request->reason
         ]);
 
         return redirect()->route('notebooks.show',$request->notebook_id);
@@ -115,7 +117,8 @@ class NotesController extends Controller
         NoteRecord::create([
             'title' => $request->title,
             'body' => $request->body,
-            'note_id' => $note->id
+            'note_id' => $note->id,
+            'reason' => $request->reason
         ]);
         
         

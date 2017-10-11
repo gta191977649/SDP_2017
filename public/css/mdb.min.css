@@ -6855,6 +6855,11 @@
      -ms-flex-direction: row;
      flex-direction: row
  }
+ .navbar .nav-link
+ {
+     float:left;
+ }
+
  .navbar.navbar-dark .navbar-nav .nav-item .nav-link.disabled,
  .navbar.navbar-dark .navbar-nav .nav-item .nav-link.disabled:hover {
      color: rgba(255, 255, 255, .5)
