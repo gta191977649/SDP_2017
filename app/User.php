@@ -31,8 +31,37 @@ class User extends Authenticatable
 
     //Relationship
     //this will insert user_id to notebooks table by default
+    public function setting()
+    {
+        return $this->hasOne("App\Setting");
+    }
+
     public function notebooks()
     {
         return $this->hasMany(Notebook::class)->withTrashed();
+    }
+    public function notesTotal()
+    {
+        $notebooks = $this->notebooks;
+        $total = 0;
+        foreach($notebooks as $notebook)
+        {
+            $total += $notebook->notes->count();
+        }
+        return $total;
+    }
+    public function deteledTotal()
+    {
+        $notebooks = $this->notebooks;
+        $total = 0;
+        foreach($notebooks as $notebook)
+        {
+            foreach($notebook->notes as $note)
+            {
+                if($note->trashed()) $total ++;
+
+            }
+        }
+        return $total;
     }
 }
