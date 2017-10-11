@@ -17,6 +17,7 @@ class CreateNoterecordsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
+            $table->text('reason');
             $table->integer('note_id');
             $table->softDeletes();
             $table->timestamps();

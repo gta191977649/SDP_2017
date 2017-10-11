@@ -4,7 +4,7 @@
     <!-- Main component for call to action -->
     <div class="container-fluid">
         <!-- heading -->
-        <div class="pull-xs-right float-right">
+        <div id="newJournalButton" class="pull-xs-right fl-right">
             <button type="button" class="btn btn-primary" data-modal="CJ">+ New Journal</button>
         </div>
         <h1 class="pull-xs-left">
@@ -12,9 +12,10 @@
         </h1>
 
         <hr/>
-        @if($notes->count() == 0)
+        @if($notes->where("deleted_at",NULL)->count() == 0)
             <div class="alert alert-primary" role="alert">
                 You have no Journals.
+                
             </div>
         @endif
     <div class="row">
@@ -30,19 +31,23 @@
                                         {{ $noteObj->name }}
                                     </h4>
                                 </a>
-                                <a href="#" class="card-edit-link " data-toggle="modal" data-modal="EJ" data-id="{{ $noteObj->id }}" data-text="{{ $noteObj->name }}">
+                                <a href="#" class="fl-right mt-1" data-toggle="modal" data-modal="EJ" data-id="{{ $noteObj->id }}" data-text="{{ $noteObj->name }}">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> Edit
                                 </a>
-
                             </div>
                             <a href="#">
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
                             </a>
                             <div class="card-block pt-2">
-                                <form  action="/notebooks/{{ $noteObj->id }}" class="pull-xs-right5 card-link" method="POST" style="display:inline">
+                                <button href="" class="btn btn-sm btn-secondary mx-auto " type="submit" value="Hide" onclick="event.preventDefault(); document.getElementById('hideJournal').submit();"><i class="fa fa-eye-slash" aria-hidden="true"></i> Hide</button>
+                                <button href="" class="btn btn-sm red mx-auto fl-right" type="submit" value="Delete" onclick="event.preventDefault(); document.getElementById('deleteJournal').submit();"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                <form id="deleteJournal" action="/notebooks/{{ $noteObj->id }}" class="fl-right card-link" method="POST" style="display:inline">
                                     {{ method_field('DELETE') }} <!-- ?? -->
                                     {{ csrf_field() }}
-                                    <input class="btn btn-sm btn-danger float-right" type="submit" value="Delete">
+                                </input>
+                                <form id="hideJournal" action="/notebooks/{{ $noteObj->id }}" class="fl-right card-link" method="POST" style="display:inline">
+                                    {{ method_field('DELETE') }} <!-- ?? -->
+                                    {{ csrf_field() }}
                                 </input>
                             </form>
                         </div>
@@ -75,16 +80,13 @@
                                             {{ $noteObj->name }}
                                         </h4>
                                     </a>
-                                    <div class="card-link2">
-                                        REMOVED
-                                    </div>
+
+                                    <span class="badge badge-danger fl-right mt-1">REMOVED</span>
                                 </div>
                                 <a href="#">
                                     <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
                                 </a>
-                                <div class="card-block pt-2">
-                                    <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled/>
-                                </div>
+                                <div class="card-block pt-2"></div>
                             </div>
                         </div>
 
