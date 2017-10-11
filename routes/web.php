@@ -33,6 +33,12 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('notes/{note}/history/','NotesController@showHistory')->name('notes.history');
 
     Route::get('notes/{notebookID}/createNote','NotesController@createNote')->name('notes.createNote');
+
+    Route::get('ucp/index','UCPController@index')->name('ucp.index');
+    Route::get('ucp/setting','SettingController@index')->name('ucp.setting.index');
+    Route::post('ucp/setting','SettingController@applyTheme')->name('ucp.setting.theme');
+    
+    
 });
 
 //Made the help page in the base controller, idk why tho
