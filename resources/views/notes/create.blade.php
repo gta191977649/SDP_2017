@@ -1,7 +1,7 @@
 @extends('layouts/base')
 @section('content')
 
-<div class = "container"> 
+<div class = "container">
 
     <!-- Error Alert -->
     <div id="myModal" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -22,25 +22,23 @@
         </div>
     </div>
     </div>
-    <h1>Create Notes</h1>
+    <h1>Create Entry</h1>
     <form action="{{route('notes.store')}}" method="POST" onsubmit="return validateForm()">
     {{ csrf_field() }}
         <div class="form-group">
-            <label for"title">Note Title</label>
-            <input class="form-control" type="text" name="title" id="title" required>  
+            <label for"title">Entry Title</label>
+            <input class="form-control" type="text" name="title" id="title" required>
         </div>
         <div class="form-group">
-            <label for"body">Note Body</label>
+            <label for"body">Entry Body</label>
             <!--<input class="form-control" type="text" name="body"> -->
             <textarea class="form-control" type="text" name="body"  rows="10" id="bodyField" required></textarea>
             @ckeditor('bodyField')
 
         </div>
         <input type="hidden" name="notebook_id" value="{{ $id }}">
-        <div class="form-group">
-            <label>Reason for mofification / creation:</label>
-            <textarea class="form-control" type="text" name="reason" id="reason"  rows="2" required></textarea>
-        </div>
+        <input type="hidden" name="reason" id="reason" value="creation">
+
         <input class="btn btn-primary" type="submit" value ="Add" >
         <script>
             function validateForm()
@@ -60,6 +58,5 @@
             }
         </script>
     </form>
-</div>   
+</div>
 @endsection
-

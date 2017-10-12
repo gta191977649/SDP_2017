@@ -23,7 +23,7 @@ main{
 }
 .notes-group{
 	/*margin-top: 10px;*/
-	padding-top: 50px;
+
 }
 
 .notebook-title{
@@ -94,7 +94,7 @@ a>img{
 	display: none;
 }
 
-#createNote, #deleteNote, #openNote, #editNote{
+#createNote, #deleteNote, #openNote, #editNote, #historyNote{
 	display: none;
 }
 
@@ -123,4 +123,7 @@ a>img{
 
 .fl-left{
 	float:left !important;
+}
+.blue-col{
+	color: #0275d8;
 }
