@@ -14,7 +14,7 @@ class NoteRecord extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['title','body','note_id'];
+    protected $fillable = ['title','body','note_id','reason'];
 
     
 

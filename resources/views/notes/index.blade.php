@@ -3,23 +3,23 @@
 @section('content')
 <!-- Main component for call to action -->
 <div class="container">
-    <div class="pull-xs-right float-right">
+        <div class="pull-xs-right fl-right">
         <button type="button" class="btn btn-primary" onclick="showsearch()">
             <i id="slideIcon" class="fa fa-search" aria-hidden="true"></i> Search</button>
         @if($notebook->trashed())
         <a class="btn btn-blue-grey disabled" href="{{ route('notes.createNote',$notebook->id) }}" role="button" disabled>
-            New Note +
+                New Entry +
         </a>
         @else
         <a class="btn btn-primary" href="{{ route('notes.createNote',$notebook->id) }}" role="button">
-            New Note +
+                New Entry +
         </a>
         @endif
         <a class="btn btn-red" href="{{route('index')}}"> Back</a>
     </div>
 
     <h1 class="pull-xs-left">
-        Entries {{ $notebook->trashed() ? "History" : ""}}
+            Entries {{ $notebook->trashed() ? "History" : ""}}
     </h1>
     <hr/>
     <!-- SEARCH BAR AREA -->	
@@ -72,52 +72,45 @@
 
         @if($notesObj->trashed())
         <!-- Deal with deleted item here -->
-        <div class="card">
+                <div class="card mt-3">
             <div class="card-body">
-                <div class="float-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
-                <a href="">
+                    <div class="fl-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
                     <h4 class="card-title ">
                         {{ $notesObj->noterecords->last()['title'] }}
-                        <span class="badge badge-secondary">Deleted Item</span>
+                            <span class="badge badge-danger">Deleted Item</span>
 
                     </h4>
-                </a>
                 <p class="card-text">
                     {!! $notesObj->noterecords->last()['body'] !!}
                 </p>
 
                 <hr/>
-
-
-                <input class="btn btn-sm btn-danger float-right" type="submit" value="Deleted" disabled>
                 <a class="card-link" href="{{ route('notes.history',$notesObj->id) }}">History</a>
             </div>
         </div>
         <br/>
         @else
-        <div class="card">
+                <div class="card mt-3">
             <div class="card-body">
-                <div class="float-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
-                <a href="">
-
-                    <h4 class="card-title">
+                    <div class="fl-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
+                        <h4 class="card-title blue-col">
                         {{ $notesObj->noterecords->last()['title'] }}
-
                     </h4>
-                </a>
                 <p class="card-text">
                     {!! $notesObj->noterecords->last()['body'] !!}
                 </p>
 
                 <hr/>
 
-                <form action="{{ route('notes.destroy',$notesObj->id) }}" method="POST">
+                    <form class="fl-right" action="{{ route('notes.destroy',$notesObj->id) }}" method="POST">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
-                    <input class="btn btn-sm btn-danger float-right" type="submit" value="Delete">
+                        <input class="btn btn-sm btn-danger fl-right" type="submit" value="Delete">
                 </form>
-                <a class="card-link" href="{{ route('notes.edit',$notesObj->id) }}">Edit</a>
-                <a class="card-link" href="{{ route('notes.history',$notesObj->id) }}">History</a>
+                        <a class="card-link btn btn-sm btn-primary" href="{{ route('notes.edit',$notesObj->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+ Edit</a>
+                        <a class="card-link btn btn-sm btn-primary" href="{{ route('notes.history',$notesObj->id) }}"><i class="fa fa-history" aria-hidden="true"></i>
+ History</a>
             </div>
         </div>
         <br/>

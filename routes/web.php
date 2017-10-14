@@ -36,6 +36,11 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::get('notes/{notebookID}/createNote','NotesController@createNote')->name('notes.createNote');
     Route::post('notes/{notebookID}/search','NotebooksController@searchEntry')->name('notes.search');
+    Route::get('ucp/index','UCPController@index')->name('ucp.index');
+    Route::get('ucp/setting','SettingController@index')->name('ucp.setting.index');
+    Route::post('ucp/setting','SettingController@applyTheme')->name('ucp.setting.theme');
+    
+    
 });
 
 //Made the help page in the base controller, idk why tho
@@ -49,7 +54,7 @@ Route::get('/session/show','SessionController@getSession');
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 //Route For get user uploaded image
 Route::get('/storage/uploads/{filename}','ImgController@getImg');
