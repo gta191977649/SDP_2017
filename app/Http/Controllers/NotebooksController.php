@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; //add auth package
+use Illuminate\Support\Facades\DB;
 use App\Notebook;
+use App\Note;
 
 class NotebooksController extends Controller {
 
@@ -77,13 +79,11 @@ class NotebooksController extends Controller {
         if ($req->has('fromDate'))
         {
             $parsed = date_create_from_format("d/m/Y", $data['fromDate']);
-            print_r("from: " . $parsed->format('Y-m-d') . ' 00:00:00');
             $notebooks->where('created_at', '>=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
         if ($req->has('toDate'))
         {
             $parsed = date_create_from_format("d/m/Y", $data['toDate']);
-            print_r("to: " . $parsed->format('Y-m-d') . ' 00:00:00');
             $notebooks->where('created_at', '<=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
         if ($req->has('hidden'))
@@ -108,28 +108,46 @@ class NotebooksController extends Controller {
 //return $n->created_at;
         return view('notes/index')->with('notes', $notes)->with('notebook', $notebook);
     }
-    public function searchEntry(Request $req,$notebookID)
+
+    public function searchEntry(Request $req, $notebookID)
     {
         $data = $req->all();
         $notebook = NoteBook::withTrashed()->find($notebookID);
-        $notes = $notebook->notes()->withTrashed()->get();
-         if ($req->has('entryName'))
+        $NID = $notebookID;
+        $results = DB::select(DB::raw("select n.id as NoteID, r.id as Record from notes n
+                                        join noterecords r on n.id = r.note_id
+                                        where r.id = (select max(id) from noterecords where note_id = n.id)
+                                        and n.notebook_id = :NID;"), array('NID' => $NID));
+        $recordIDs = array();
+        foreach ($results as $r)
         {
-            $notes->where('name', 'LIKE', '%' . $data['entryName'] . '%');
+            $recordIDs[] = $r->Record;
+        }
+        $noterecords = DB::table('noterecords')->whereIn('id',$recordIDs);
+        if ($req->has('entryName'))
+        {
+            $noterecords->where('title', 'LIKE', '%' . $data['entryName'] . '%');
         }
         if ($req->has('fromDate'))
         {
             $parsed = date_create_from_format("d/m/Y", $data['fromDate']);
-            print_r("from: " . $parsed->format('Y-m-d') . ' 00:00:00');
-            $notebooks->where('created_at', '>=', $parsed->format('Y-m-d') . ' 00:00:00');
+            $noterecords->where('created_at', '>=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
         if ($req->has('toDate'))
         {
             $parsed = date_create_from_format("d/m/Y", $data['toDate']);
-            print_r("to: " . $parsed->format('Y-m-d') . ' 00:00:00');
-            $notebooks->where('created_at', '<=', $parsed->format('Y-m-d') . ' 00:00:00');
+            $noterecords->where('created_at', '<=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
-
+        $ress = $noterecords->get();
+        $noteIDs = array();
+        
+        foreach($ress as $record)
+        {
+            //Get the note object for each record found
+            $noteIDs[] =  $record->note_id;
+        }
+        $notes = Note::whereIn('id', $noteIDs)->get();
         return view('notes/index')->with('notes', $notes)->with('notebook', $notebook);
     }
+
 }
