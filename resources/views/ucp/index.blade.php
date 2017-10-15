@@ -30,6 +30,7 @@
             ->join('notes', 'notes.notebook_id', '=', 'notebooks.id')
             ->join('noterecords', 'noterecords.note_id', '=', 'notes.id')
             ->select('noterecords.title','noterecords.body','noterecords.created_at','notebooks.name')
+            ->where('notebooks.user_id',Auth::user()->id)
             ->orderBy('noterecords.created_at', 'desc')
             ->take(10)
             ->get();
