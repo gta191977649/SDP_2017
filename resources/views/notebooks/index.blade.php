@@ -3,16 +3,64 @@
     <!-- /navbar -->
     <!-- Main component for call to action -->
     <div class="container-fluid">
+
         <!-- heading -->
         <div id="newJournalButton" class="pull-xs-right fl-right">
-            <button type="button" class="btn btn-primary" data-modal="CJ">+ New Journal</button>
+            <button type="button" class="btn btn-primary" onclick="showsearch()">
+            <i id="slideIcon" class="fa fa-search" aria-hidden="true"></i> Search</button>
+		<button type="button" class="btn btn-primary" data-modal="CJ">+ New Journal</button>
         </div>
         <h1 class="pull-xs-left">
             Your Journals
         </h1>
 
         <hr/>
-        @if($notes->where("deleted_at",NULL)->count() == 0)
+    <!-- SEARCH BAR AREA -->	
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">	
+            <div id="searchCollapse">
+                <h4>Search</h4>
+                <div>
+                    <form method="POST" action="/notebooks/search">
+                        {{ csrf_field() }}
+                        <div class="form-row">
+                            <div class="col">
+                                <input class="form-control" name="journalName" type="text" placeholder="Journal name..">
+                            </div>
+                        </div>
+                        <div class="form-row">				
+                            <div class="col">
+                                <label class="col-form-label" for="fromDate">From</label>							
+                                <input class="datepicker form-control" id="fromDate" name="fromDate" type="text"  placeholder="DD/MM/YYYY">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="toDate">To</label>							
+                                <input class="datepicker form-control" id="toDate" name="toDate" type="text"  placeholder="DD/MM/YYYY">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input id="hidden" class="form-check-input" name="hidden" type="checkbox" value="">
+                                        Show Hidden
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">                        
+                            <div class="form-group col-md-6">
+                                <button class="btn btn-primary" type="submit" role="button">Submit</button>
+                            </div>	
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <hr />
+    </div>
+ @if($notes->where("deleted_at",NULL)->count() == 0)
             <div class="alert alert-primary" role="alert">
                 You have no Journals.
                 
@@ -32,7 +80,7 @@
                                     </h4>
                                 </a>
                                 <a href="#" class="fl-right mt-1" data-toggle="modal" data-modal="EJ" data-id="{{ $noteObj->id }}" data-text="{{ $noteObj->name }}">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
                             </div>
                             <a href="#">
@@ -93,7 +141,6 @@
                     @endif
                 @endforeach
             </div>
-        </div>
 
     </div>
 </div>

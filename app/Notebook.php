@@ -10,8 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Notebook extends Model
 {
     //
-
-    protected $fillable=['name']; //POST Filll
+    protected $fillable=['name','hidden']; //POST Filll
     use SoftDeletes;
     //define releation ship
     public function notes()

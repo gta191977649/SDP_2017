@@ -1,26 +1,30 @@
-let hidden = true;
 
-$("#hideToggle").click(function(){
-    if(hidden){
-        $('.notebook-hidden').slideToggle( "slow", "linear" );
-        hidden = !hidden;
-        $("#hideToggle").text("Hide Trashed Journals");
+$('#searchCollapse').hide();
+$('.notebook-hidden').slideToggle("slow", "linear");
 
-    }else{
-        $('.notebook-hidden').slideToggle( "slow", "linear" );
-        hidden = !hidden;
-        $("#hideToggle").text("Show Trashed Journals");
-    }
+function showsearch() {
+    $('#searchCollapse').slideToggle(500, function () {
+        if ($('#searchCollapse').is(":visible"))
+        {
+            $('#slideBtn').innerHTML = '<i id="slideIcon" class="fa fa-caret-up" aria-hidden="true"></i>';
+        } else {
+            $('#slideBtn').innerHTML = '<i id="slideIcon" class="fa fa-caret-down" aria-hidden="true"></i>';
+        }
+    });
+
+}
+
+$(function () {
+    $( ".datepicker" ).datepicker();
+    $(".datepicker").datepicker("option", "dateFormat", 'dd/mm/yy');
 });
 
-
-$("#datepicker").datepicker();
 $("a[data-modal='EJ']").click(function () {
     var this_id = $(this).attr('data-id');
     var this_text = $(this).attr('data-text');
     var base_url = 'notebooks/rename/';
-    $.get(base_url + this_id , function (data) {
-        $(data).appendTo( "body" );
+    $.get(base_url + this_id, function (data) {
+        $(data).appendTo("body");
         $('#myModal').modal();
         $('#myModal').on('shown.bs.modal', function () {
             $('#myModal .load_modal').html(data);
@@ -33,8 +37,8 @@ $("a[data-modal='EJ']").click(function () {
 
 $("button[data-modal='CJ']").click(function () {
     var base_url = 'notebooks/create';
-    $.get(base_url , function (data) {
-        $(data).appendTo( "body" );
+    $.get(base_url, function (data) {
+        $(data).appendTo("body");
         $('#createJournalModal').modal();
         $('#createJournalModal').on('shown.bs.modal', function () {
             $('#createJournalModal .load_modal').html(data);
@@ -45,7 +49,7 @@ $("button[data-modal='CJ']").click(function () {
     });
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     // Check if body height is higher than window height :)
 
     if (($("body").height() > $(window).height())) {
@@ -53,6 +57,6 @@ $(document).ready(function() {
     }
 });
 
-function showElement(element){
+function showElement(element) {
     $(element).slideToggle();
 }
