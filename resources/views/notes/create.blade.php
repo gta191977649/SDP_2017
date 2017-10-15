@@ -57,6 +57,7 @@
 
             }
         </script>
+        <a class="btn btn-secondary" href="{{ redirect()->getUrlGenerator()->previous() }}">Cancel</a>
     </form>
 </div>
 @endsection

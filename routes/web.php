@@ -39,7 +39,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('ucp/index','UCPController@index')->name('ucp.index');
     Route::get('ucp/setting','SettingController@index')->name('ucp.setting.index');
     Route::post('ucp/setting','SettingController@applyTheme')->name('ucp.setting.theme');
-    
+    Route::get('ucp/profile','UCPController@profile')->name('ucp.profile');
     
 });
 

@@ -56,6 +56,8 @@
         </div>
         <input type="hidden" name="notebook_id" value="{{ $note->notebook_id }}">
         <input class="btn btn-primary" type="submit" value ="Update">
+        <a class="btn btn-secondary" href="{{ redirect()->getUrlGenerator()->previous() }}">Cancel</a>
+
     </form>
 </div>
 @endsection

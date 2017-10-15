@@ -11,6 +11,7 @@
             <input class="form-control" type="text" name="name" value="{{ $notebook->name }}" required>  
         </div>
         <input class="btn btn-primary" type="submit" value ="Update">
+        
     </form>
 </div>   
 @endsection

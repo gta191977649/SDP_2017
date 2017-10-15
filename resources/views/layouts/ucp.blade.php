@@ -29,7 +29,7 @@
             <a class="nav-link" href="{{ route('ucp.index') }}">Overview</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="{{ route('ucp.profile') }}">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('ucp.setting.index') }}">Setting</a>
@@ -57,7 +57,7 @@
               <a class="nav-link" href="{{ route('ucp.index') }}">Overview</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
+              <a class="nav-link" href="{{ route('ucp.profile') }}">Profile</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('ucp.setting.index') }}">Setting</a>
