@@ -22,7 +22,7 @@
             <div id="searchCollapse">
                 <h4>Search</h4>
                 <div>
-                    <form method="POST" action="/notebooks/search">
+                    <form method="get" action="{{ route('notebooks.search') }}">
                         {{ csrf_field() }}
                         <div class="form-row">
                             <div class="col">
@@ -50,9 +50,9 @@
                             </div>
                         </div>
                                               
-                            <div class="form-group float-right">
-                                <button class="btn btn-primary " type="submit" role="button">Submit</button>
-                            </div>	
+                        <div class="form-group float-right">
+                            <button class="btn btn-primary " type="submit" role="button">Submit</button>
+                        </div>	
                        
                     </form>
                 </div>

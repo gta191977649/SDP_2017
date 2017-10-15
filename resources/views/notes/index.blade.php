@@ -28,7 +28,7 @@
             <div id="searchCollapse">
                 <h4>Search</h4>
                 <div>
-                    <form method="POST" action="{{ route('notes.search',$notebook->id) }}">
+                    <form method="get" action="{{ route('notes.search',$notebook->id) }}">
                         {{ csrf_field() }}
                         <div class="form-row">
                             <div class="col">

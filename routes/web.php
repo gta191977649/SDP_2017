@@ -24,7 +24,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/notebooks/create','NotebooksController@loadCreateModal')->name('notebooks.create');
     Route::get('/notebooks/{notebookID}','NotebooksController@show')->name('notebooks.show');
     Route::get('/notebooks/rename/{id}','NotebooksController@loadEditModal')->name('notebooks.rename');
-    Route::post('/notebooks/search','NotebooksController@search')->name('notebooks.search');
+    Route::get('/search','NotebooksController@search')->name('notebooks.search');
 
     Route::put('/notebooks/{notebookID}','NotebooksController@update')->name('notebooks.update');
     Route::delete('/notebooks/{notebookID}','NotebooksController@delete');
@@ -35,7 +35,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('notes/{note}/history/','NotesController@showHistory')->name('notes.history');
 
     Route::get('notes/{notebookID}/createNote','NotesController@createNote')->name('notes.createNote');
-    Route::post('notes/{notebookID}/search','NotebooksController@searchEntry')->name('notes.search');
+    Route::get('notes/{notebookID}/search','NotebooksController@searchEntry')->name('notes.search');
     Route::get('ucp/index','UCPController@index')->name('ucp.index');
     Route::get('ucp/setting','SettingController@index')->name('ucp.setting.index');
     Route::post('ucp/setting','SettingController@applyTheme')->name('ucp.setting.theme');
