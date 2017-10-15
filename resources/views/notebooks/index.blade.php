@@ -17,8 +17,8 @@
         <hr/>
     <!-- SEARCH BAR AREA -->	
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">	
+       
+        <div class="col-sm-12">	
             <div id="searchCollapse">
                 <h4>Search</h4>
                 <div>
@@ -49,11 +49,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">                        
-                            <div class="form-group col-md-6">
-                                <button class="btn btn-primary" type="submit" role="button">Submit</button>
+                                              
+                            <div class="form-group float-right">
+                                <button class="btn btn-primary " type="submit" role="button">Submit</button>
                             </div>	
-                        </div>
+                       
                     </form>
                 </div>
             </div>
