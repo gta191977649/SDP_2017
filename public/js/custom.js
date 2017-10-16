@@ -55,7 +55,18 @@ $(document).ready(function () {
     if (($("body").height() > $(window).height())) {
         $("footer").addClass("static");
     }
+
+    $('.notebook-hidden').hide();
+
 });
+
+$('#hideToggle').click(function(){
+    $('.notebook-hidden').slideToggle();
+});
+function submitForm(form){
+    event.preventDefault();
+    document.getElementById(form).submit();
+}
 
 function showElement(element) {
     $(element).slideToggle();

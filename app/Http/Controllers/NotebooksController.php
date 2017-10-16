@@ -12,7 +12,7 @@ class NotebooksController extends Controller {
 
     public function index()
     {
-//return view('notebooks/index'); 
+//return view('notebooks/index');
 //$notes = Notebook::all(); //从数据库获取数据
         $user = Auth::user(); // get current login in user
         $note_books = $user->notebooks()->withTrashed()->get(); // get all notebooks related to this user.
@@ -49,7 +49,11 @@ class NotebooksController extends Controller {
 
         $user = Auth::user();
         $notebook = $user->notebooks()->where('id', $id)->first();
-//$notebook = Notebook::where('id',$id )->first();
+        //$notebook = Notebook::where('id',$id )->first();
+
+        $notebook->deleted = 1;
+        $notebook->save();
+
         $notebook->delete();
         return redirect('../notebooks');
     }
@@ -65,6 +69,17 @@ class NotebooksController extends Controller {
     {
         $user = Auth::user();
         return view('notebooks/modal-create');
+    }
+
+    public function hide($id){
+        $user = Auth::user();
+        $notebook = $user->notebooks()->where('id', $id)->first();
+        $hidden = $notebook->hidden;
+        $notebook->hidden = !$hidden;
+        $notebook->save();
+
+        return back();
+
     }
 
     public function search(Request $req)
@@ -86,13 +101,12 @@ class NotebooksController extends Controller {
             $parsed = date_create_from_format("d/m/Y", $data['toDate']);
             $notebooks->where('created_at', '<=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
-        if ($req->has('hidden'))
-        {
+        if ($req->has('hidden')){
             $notebooks->where('hidden', '=', $data['hidden']);
         }
         $notebooks->withTrashed();
         $notebooks = $notebooks->get();
-        return view('notebooks/index')->with('notes', $notebooks);
+        return view('notebooks.search')->with('notes', $notebooks);
     }
 
     public function show($id)
@@ -140,7 +154,7 @@ class NotebooksController extends Controller {
         }
         $ress = $noterecords->get();
         $noteIDs = array();
-        
+
         foreach($ress as $record)
         {
             //Get the note object for each record found

@@ -127,3 +127,7 @@ a>img{
 .blue-col{
 	color: #0275d8;
 }
+
+.notebook-hidden{
+	display: none;
+}

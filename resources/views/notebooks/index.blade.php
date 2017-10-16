@@ -15,10 +15,10 @@
         </h1>
 
         <hr/>
-    <!-- SEARCH BAR AREA -->	
+    <!-- SEARCH BAR AREA -->
     <div class="row">
-       
-        <div class="col-sm-12">	
+
+        <div class="col-sm-12">
             <div id="searchCollapse">
                 <h4>Search</h4>
                 <div>
@@ -29,13 +29,13 @@
                                 <input class="form-control" name="journalName" type="text" placeholder="Journal name..">
                             </div>
                         </div>
-                        <div class="form-row">				
+                        <div class="form-row">
                             <div class="col">
-                                <label class="col-form-label" for="fromDate">From</label>							
+                                <label class="col-form-label" for="fromDate">From</label>
                                 <input class="datepicker form-control" id="fromDate" name="fromDate" type="text"  placeholder="DD/MM/YYYY">
                             </div>
                             <div class="col">
-                                <label class="col-form-label" for="toDate">To</label>							
+                                <label class="col-form-label" for="toDate">To</label>
                                 <input class="datepicker form-control" id="toDate" name="toDate" type="text"  placeholder="DD/MM/YYYY">
                             </div>
                         </div>
@@ -49,11 +49,11 @@
                                 </div>
                             </div>
                         </div>
-                                              
+
                         <div class="form-group float-right">
                             <button class="btn btn-primary " type="submit" role="button">Submit</button>
-                        </div>	
-                       
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -63,13 +63,14 @@
  @if($notes->where("deleted_at",NULL)->count() == 0)
             <div class="alert alert-primary" role="alert">
                 You have no Journals.
-                
+
             </div>
         @endif
     <div class="row">
         <div class="col-12">
             @foreach ($notes as $noteObj)
-                @if(!($noteObj->trashed()))
+                @if(!($noteObj->isDeleted()))
+                    @if(!($noteObj->isHidden()))
                     <div class="col-sm-6 col-md-3 notebook">
                         <div class="card p-2">
                             <div class="card-block">
@@ -87,20 +88,21 @@
                                 <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook.jpg') }}"/>
                             </a>
                             <div class="card-block pt-2">
-                                <button href="" class="btn btn-sm btn-secondary mx-auto " type="submit" value="Hide" onclick="event.preventDefault(); document.getElementById('hideJournal').submit();"><i class="fa fa-eye-slash" aria-hidden="true"></i> Hide</button>
-                                <button href="" class="btn btn-sm red mx-auto fl-right" type="submit" value="Delete" onclick="event.preventDefault(); document.getElementById('deleteJournal').submit();"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                <button href="#" class="btn btn-sm btn-secondary mx-auto " type="submit" value="Hide" onclick="submitForm('hideJournal');"><i class="fa fa-eye-slash" aria-hidden="true"></i> Hide</button>
+                                <button href="#" class="btn btn-sm red mx-auto fl-right" type="submit" value="Delete" onclick="submitForm('deleteJournal');"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+
                                 <form id="deleteJournal" action="/notebooks/{{ $noteObj->id }}" class="fl-right card-link" method="POST" style="display:inline">
                                     {{ method_field('DELETE') }} <!-- ?? -->
                                     {{ csrf_field() }}
-                                </input>
-                                <form id="hideJournal" action="/notebooks/{{ $noteObj->id }}" class="fl-right card-link" method="POST" style="display:inline">
-                                    {{ method_field('DELETE') }} <!-- ?? -->
+                                </form>
+
+                                <form id="hideJournal" action="/notebooks/hide/{{ $noteObj->id }}" class="fl-right card-link" method="POST" style="display:inline">
                                     {{ csrf_field() }}
-                                </input>
-                            </form>
+                                </form>
                         </div>
                     </div>
                 </div>
+                @endif
             @endif
         @endforeach
         </div>
@@ -110,16 +112,13 @@
     <div class="row">
         <div class="col-12">
             <hr/>
-                <h2 class="hidden-notebook-title pull-xs-left">Hidden or Deleted Journals <button id="hideToggle" class="btn btn-primary" role="button" value="">Show Trashed Journals</button></h2>
+            <h2 class="hidden-notebook-title pull-xs-left">Hidden Journals <button id="hideToggle" class="btn btn-primary" role="button" value="">Show Hidden Journals</button></h2>
             <hr/>
         </div>
-
-
         <div class="col-12">
             <div class="notebook-hidden">
                 @foreach ($notes as $noteObj)
-
-                    @if(($noteObj->trashed()))
+                    @if(($noteObj->isHidden()))
                         <div class="col-3 notebook ">
                             <div class="card p-2">
                                 <div class="card-block">
@@ -128,8 +127,10 @@
                                             {{ $noteObj->name }}
                                         </h4>
                                     </a>
-
-                                    <span class="badge badge-danger fl-right mt-1">REMOVED</span>
+                                    <span class="badge badge-secondary fl-right mt-1">HIDDEN</span>
+                                    <!--
+                                        <span class="badge badge-danger fl-right mt-1">REMOVED</span>
+                                    -->
                                 </div>
                                 <a href="#">
                                     <img alt="Responsive image" class="img-fluid" src="{{ asset('img/notebook-del.jpg') }}"/>
@@ -142,7 +143,8 @@
                 @endforeach
             </div>
 
+        </div>
     </div>
+    <!-- /container -->
 </div>
-<!-- /container -->
 @endsection

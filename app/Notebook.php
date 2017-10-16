@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Notebook extends Model
 {
     //
-    protected $fillable=['name','hidden']; //POST Filll
+    protected $fillable=['name','hidden','deleted']; //POST Filll
+
     use SoftDeletes;
     //define releation ship
     public function notes()
@@ -22,4 +23,13 @@ class Notebook extends Model
     {
         return $this->belongsTo("App\User")->withTrashed();
     }
+
+    public function isHidden(){
+        return !$this->hidden;
+    }
+
+    public function isDeleted(){
+        return $this->deleted;
+    }
+
 }

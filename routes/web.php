@@ -28,6 +28,7 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::put('/notebooks/{notebookID}','NotebooksController@update')->name('notebooks.update');
     Route::delete('/notebooks/{notebookID}','NotebooksController@delete');
+    Route::post('/notebooks/hide/{notebookID}','NotebooksController@hide');
 
 
     Route::resource('notes','NotesController');
@@ -40,7 +41,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('ucp/setting','SettingController@index')->name('ucp.setting.index');
     Route::post('ucp/setting','SettingController@applyTheme')->name('ucp.setting.theme');
     Route::get('ucp/profile','UCPController@profile')->name('ucp.profile');
-    
+
 });
 
 //Made the help page in the base controller, idk why tho
