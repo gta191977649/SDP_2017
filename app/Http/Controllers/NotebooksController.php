@@ -74,8 +74,8 @@ class NotebooksController extends Controller {
     public function hide($id){
         $user = Auth::user();
         $notebook = $user->notebooks()->where('id', $id)->first();
-        $hidden = $notebook->hidden;
-        $notebook->hidden = !$hidden;
+        $hidden = $notebook->hide;
+        $notebook->hide = !$hidden;
         $notebook->save();
 
         return back();
@@ -101,10 +101,16 @@ class NotebooksController extends Controller {
             $parsed = date_create_from_format("d/m/Y", $data['toDate']);
             $notebooks->where('created_at', '<=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
+
         if ($req->has('hidden')){
-            $notebooks->where('hidden', '=', $data['hidden']);
+            $notebooks->where('hide',$data['hidden']);
+        }else{
+            $notebooks->where('hide','0');
         }
-        $notebooks->withTrashed();
+
+        //Don't show deleted journals
+        $notebooks->where('deleted','0');
+
         $notebooks = $notebooks->get();
         return view('notebooks.search')->with('notes', $notebooks);
     }

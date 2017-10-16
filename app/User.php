@@ -64,4 +64,29 @@ class User extends Authenticatable
         }
         return $total;
     }
+
+    public function numHidden(){
+        $notebooks =  $this->notebooks->where('hide',1);
+        return count($notebooks);
+    }
+
+    public function numDeleted(){
+        $notebooks = $this->notebooks->where('deleted',1);
+        return count($notebooks);
+    }
+
+    public function hasHidden(){
+        return ($this->numHidden() > 0);
+    }
+
+    public function hasDeleted(){
+        return ($this->numDeleted() > 0);
+    }
+
+    public function hasActiveJournals(){
+        $notebooks = $this->notebooks->where('deleted',0);
+        return count($notebooks);
+    }
+
+
 }

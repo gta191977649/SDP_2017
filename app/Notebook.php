@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Notebook extends Model
 {
     //
-    protected $fillable=['name','hidden','deleted']; //POST Filll
+    protected $fillable=['name','hide','deleted','hidden']; //POST Filll
 
     use SoftDeletes;
     //define releation ship
@@ -25,7 +25,8 @@ class Notebook extends Model
     }
 
     public function isHidden(){
-        return !$this->hidden;
+        $this->hidden = $this->hide;
+        return $this->hidden;
     }
 
     public function isDeleted(){
