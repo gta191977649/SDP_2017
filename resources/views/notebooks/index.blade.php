@@ -47,7 +47,7 @@
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input id="hidden" class="form-check-input" name="hidden" type="checkbox" value="1"/>
-                                            Show Hidden
+                                            Show Only Hidden
                                         </label>
                                     </div>
                                 </div>
@@ -76,7 +76,6 @@
             @endif
             <div class="row">
                 <div class="col-12">
-
                     @foreach ($notes as $noteObj)
                         @if(!($noteObj->isDeleted()))
                             @if(!($noteObj->isHidden()))
@@ -115,6 +114,7 @@
                         @endif
                     @endforeach
                 </div>
+
                 <!--Hidden Journals-->
                 <div class="col-12 hidden-notebook-section">
                     @if(Auth::user()->hasHidden())

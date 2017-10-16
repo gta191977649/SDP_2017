@@ -47,7 +47,7 @@
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input id="hidden" class="form-check-input" name="hidden" type="checkbox" value="1"/>
-                                            Show Hidden
+                                            Show Only Hidden
                                         </label>
                                     </div>
                                 </div>

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth; //add auth package
 use Illuminate\Support\Facades\DB;
 use App\Notebook;
 use App\Note;
+use Log;
+
 
 class NotebooksController extends Controller {
 
@@ -94,13 +96,17 @@ class NotebooksController extends Controller {
         if ($req->has('fromDate'))
         {
             $parsed = date_create_from_format("d/m/Y", $data['fromDate']);
+            Log::info($data['fromDate']);
             $notebooks->where('created_at', '>=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
         if ($req->has('toDate'))
         {
             $parsed = date_create_from_format("d/m/Y", $data['toDate']);
+            Log::info($data['toDate']);
             $notebooks->where('created_at', '<=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
+        //Don't show deleted journals
+        $notebooks->where('deleted','0');
 
         if ($req->has('hidden')){
             $notebooks->where('hide',$data['hidden']);
@@ -108,24 +114,21 @@ class NotebooksController extends Controller {
             $notebooks->where('hide','0');
         }
 
-        //Don't show deleted journals
-        $notebooks->where('deleted','0');
+
 
         $notebooks = $notebooks->get();
         return view('notebooks.search')->with('notes', $notebooks);
     }
 
-    public function show($id)
-    {
+    public function show($id){
         $notebook = NoteBook::withTrashed()->find($id);
-
-//$notes = $notebook->notes;
+        //$notes = $notebook->notes;
         $notes = $notebook->notes()->withTrashed()->get();
-//return $notes;
-//return $notes->find(1)->noterecords;
-//$n = $notes->find(2)->noterecords->first();
-//$notes->find(2)->noterecords->first()->title;
-//return $n->created_at;
+        //return $notes;
+        //return $notes->find(1)->noterecords;
+        //$n = $notes->find(2)->noterecords->first();
+        //$notes->find(2)->noterecords->first()->title;
+        //return $n->created_at;
         return view('notes/index')->with('notes', $notes)->with('notebook', $notebook);
     }
 
