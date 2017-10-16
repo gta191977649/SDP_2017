@@ -1,6 +1,5 @@
 
 $('#searchCollapse').hide();
-$('.notebook-hidden').slideToggle("slow", "linear");
 
 function showsearch() {
     $('#searchCollapse').slideToggle(500, function () {
@@ -60,9 +59,21 @@ $(document).ready(function () {
 
 });
 
+var hidden = true;
 $('#hideToggle').click(function(){
-    $('.notebook-hidden').slideToggle();
+
+    showElementF('.hidden-notebook-section');
+
+    if(hidden){
+        $('#hideToggle').text("Hide Hidden");
+        $('#hideToggle').prop('value', 'Hide Hidden');
+    }else{
+        $('#hideToggle').text("Show Hidden") ;
+        $('#hideToggle').prop('value', 'Show Hidden');
+    }
+    hidden=!hidden;
 });
+
 function submitForm(form){
     event.preventDefault();
     document.getElementById(form).submit();
@@ -70,4 +81,8 @@ function submitForm(form){
 
 function showElement(element) {
     $(element).slideToggle();
+}
+
+function showElementF(element) {
+    $(element).fadeToggle();
 }
