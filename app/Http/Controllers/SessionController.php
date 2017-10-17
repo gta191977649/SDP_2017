@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -16,5 +17,10 @@ class SessionController extends Controller
     {
         return $req->session()->get('Test');
         //return "test";
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('index');
     }
 }
