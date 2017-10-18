@@ -71,7 +71,7 @@
                                         Include Hidden Entries
                                     </label>
                                 </div>
-                                 <div class="form-check">
+                                <div class="form-check">
                                     <label class="form-check-label">
                                         <input id="deleted" class="form-check-input" name="deleted" type="checkbox" value="1"/>
                                         Include Deleted Entries
@@ -79,9 +79,9 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="form-group float-right">
-                                <button class="btn btn-primary" type="submit" role="button">Submit</button>
-                            </div>
+                        <div class="form-group float-right">
+                            <button class="btn btn-primary" type="submit" role="button">Submit</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -121,7 +121,7 @@
         </div>
         <br/>
         @elseif($notesObj->isHide())
-            <div class="card mt-3">
+        <div class="card mt-3">
             <div class="card-body">
                 <div class="fl-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
                 <h4 class="card-title blue-col">
@@ -163,6 +163,10 @@
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
                     <input class="btn btn-sm btn-danger fl-right" type="submit" value="Delete">
+                </form>
+                <form class="fl-right" action="{{ route('notes.hide',$notesObj->id) }}" method="GET">
+                    {{ csrf_field() }}
+                    <input class="btn btn-sm btn-secondary fl-right" type="submit" value="Hide">
                 </form>
                 <a class="card-link btn btn-sm btn-primary" href="{{ route('notes.edit',$notesObj->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     Edit</a>
