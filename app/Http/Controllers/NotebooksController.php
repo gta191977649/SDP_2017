@@ -121,16 +121,23 @@ class NotebooksController extends Controller {
         return view('notebooks.search')->with('notes', $notebooks);
     }
 
-    public function show($id)
+    public function show($id, $allEntries = false)
     {
         $notebook = NoteBook::withTrashed()->find($id);
-        $notes = $notebook->notes()->withTrashed()->orderBy('updated_at','desc')->get();
+        $notes = $notebook->notes();
+        if($allEntries)
+        {
+                $notes = $notes->withTrashed();
+        }else{
+            $notes = $notes->whereNull('deleted_at');
+        }
+        $notes = $notes->orderBy('created_at','desc')->get();
         //return $notes;
         //return $notes->find(1)->noterecords;
         //$n = $notes->find(2)->noterecords->first();
         //$notes->find(2)->noterecords->first()->title;
         //return $n->created_at;
-        return view('notes/index')->with('notes', $notes)->with('notebook', $notebook);
+        return view('notes/index')->with('notes', $notes)->with('notebook', $notebook)->with('active' , !$allEntries);
     }
 
     public function searchEntry(Request $req, $notebookID)

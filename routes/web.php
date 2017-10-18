@@ -22,7 +22,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('/notebooks','NotebooksController@store');
 
     Route::get('/notebooks/create','NotebooksController@loadCreateModal')->name('notebooks.create');
-    Route::get('/notebooks/{notebookID}','NotebooksController@show')->name('notebooks.show');
+    Route::get('/notebooks/{notebookID}/{allEntries?}','NotebooksController@show')->name('notebooks.show');
     Route::get('/notebooks/rename/{id}','NotebooksController@loadEditModal')->name('notebooks.rename');
     Route::get('/search','NotebooksController@search')->name('notebooks.search');
 
