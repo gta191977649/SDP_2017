@@ -47,7 +47,6 @@ class NotebooksController extends Controller {
 
     public function delete($id)
     {
-
         $user = Auth::user();
         $notebook = $user->notebooks()->where('id', $id)->first();
         //$notebook = Notebook::where('id',$id )->first();

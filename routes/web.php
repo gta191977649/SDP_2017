@@ -27,7 +27,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/search','NotebooksController@search')->name('notebooks.search');
 
     Route::put('/notebooks/{notebookID}','NotebooksController@update')->name('notebooks.update');
-    Route::delete('/notebooks/{notebookID}','NotebooksController@delete');
+    Route::delete('/notebooks/{notebookID}','NotebooksController@delete')->name('notebooks.delete');
     Route::post('/notebooks/hide/{notebookID}','NotebooksController@hide');
     Route::get('/logout','SessionController@logout')->name('user.logout');
 
