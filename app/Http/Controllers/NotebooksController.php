@@ -9,7 +9,6 @@ use App\Notebook;
 use App\Note;
 use Log;
 
-
 class NotebooksController extends Controller {
 
     public function index()
@@ -73,7 +72,8 @@ class NotebooksController extends Controller {
         return view('notebooks/modal-create');
     }
 
-    public function hide($id){
+    public function hide($id)
+    {
         $user = Auth::user();
         $notebook = $user->notebooks()->where('id', $id)->first();
         $hidden = $notebook->hide;
@@ -81,7 +81,6 @@ class NotebooksController extends Controller {
         $notebook->save();
 
         return back();
-
     }
 
     public function search(Request $req)
@@ -106,12 +105,14 @@ class NotebooksController extends Controller {
             $notebooks->where('created_at', '<=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
         //Don't show deleted journals
-        $notebooks->where('deleted','0');
+        $notebooks->where('deleted', '0');
 
-        if ($req->has('hidden')){
-            $notebooks->where('hide',$data['hidden']);
-        }else{
-            $notebooks->where('hide','0');
+        if ($req->has('hidden'))
+        {
+            $notebooks->where('hide', $data['hidden']);
+        } else
+        {
+            $notebooks->where('hide', '0');
         }
 
 
@@ -120,10 +121,10 @@ class NotebooksController extends Controller {
         return view('notebooks.search')->with('notes', $notebooks);
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $notebook = NoteBook::withTrashed()->find($id);
-        //$notes = $notebook->notes;
-        $notes = $notebook->notes()->withTrashed()->get();
+        $notes = $notebook->notes()->withTrashed()->orderBy('updated_at','desc')->get();
         //return $notes;
         //return $notes->find(1)->noterecords;
         //$n = $notes->find(2)->noterecords->first();
@@ -146,7 +147,7 @@ class NotebooksController extends Controller {
         {
             $recordIDs[] = $r->Record;
         }
-        $noterecords = DB::table('noterecords')->whereIn('id',$recordIDs);
+        $noterecords = DB::table('noterecords')->whereIn('id', $recordIDs);
         if ($req->has('entryName'))
         {
             $noterecords->where('title', 'LIKE', '%' . $data['entryName'] . '%');
@@ -164,10 +165,10 @@ class NotebooksController extends Controller {
         $ress = $noterecords->get();
         $noteIDs = array();
 
-        foreach($ress as $record)
+        foreach ($ress as $record)
         {
             //Get the note object for each record found
-            $noteIDs[] =  $record->note_id;
+            $noteIDs[] = $record->note_id;
         }
         $notes = Note::whereIn('id', $noteIDs)->get();
         return view('notes/index')->with('notes', $notes)->with('notebook', $notebook);
