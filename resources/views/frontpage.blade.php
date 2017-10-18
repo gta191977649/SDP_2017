@@ -1,5 +1,5 @@
-@extends('layouts/base')<!-- 继承样式 -->
-@section('content')<!-- 定义单独页面样式 -->
+@extends('layouts/base')
+@section('content')
         <!-- Main component for call to action -->
         <div class="jumbotron">
             <h1>Journal</h1>
@@ -9,5 +9,4 @@
             </p>
         </div>
 
-    <!-- /container -->
-@endsection <!-- 结束 -->
+@endsection

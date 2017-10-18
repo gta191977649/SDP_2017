@@ -61,3 +61,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Route For get user uploaded image
 Route::get('/storage/uploads/{filename}','ImgController@getImg');
+
