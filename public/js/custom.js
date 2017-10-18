@@ -76,7 +76,6 @@ $('#hideToggle').click(function(){
 });
 
 function submitForm(form){
-    event.preventDefault();
     document.getElementById(form).submit();
 }
 
