@@ -54,17 +54,17 @@
                                                     </ul>
                                                     @endif
                                                     </div>
-                                                    <li class="nav-item" style="color: white;">
-                                                        <a class="nav-link waves-effect waves-light" title="Report a bug" href="mailto:dev@journel.com?subject=BUG REPORT">
-                                                            <i class="fa fa-warning" aria-hidden="true"></i> 
+                                                    <div class="nav-item">
+                                                        <a class="nav-link" title="Report a bug" href="mailto:dev@journel.com?subject=BUG REPORT">
+                                                            <i class="fa fa-warning" style="color: white;" aria-hidden="true"></i> 
                                                         </a> 
-                                                    </li>
+                                                    </div>
                                                     </div>
                                                     </nav>
                                                     </header>
                                                     <main>
                                                         <div class="container">
-                                                            @yield('content')<!-- 自定义内容 -->
+                                                            @yield('content')<!-- Custom Area -->
                                                         </div>
                                                     </main>
                                                     <footer class="footer">
