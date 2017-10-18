@@ -29,7 +29,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::put('/notebooks/{notebookID}','NotebooksController@update')->name('notebooks.update');
     Route::delete('/notebooks/{notebookID}','NotebooksController@delete');
     Route::post('/notebooks/hide/{notebookID}','NotebooksController@hide');
-
+    Route::get('/logout','SessionController@logout')->name('user.logout');
 
     Route::resource('notes','NotesController');
     Route::get('notes/{note}/history/','NotesController@showHistory')->name('notes.history');
