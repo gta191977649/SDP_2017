@@ -16,6 +16,7 @@
         </a>
         @endif
         <a class="btn btn-red" href="{{route('index')}}"> Back</a>
+
     </div>
 
     <div class="pull-xs-left">

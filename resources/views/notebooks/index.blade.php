@@ -10,9 +10,14 @@
             <button type="button" class="btn btn-primary" data-modal="CJ">+ New Journal</button>
             <button id="hideToggle" type="button" class="btn btn-primary">Show Hidden</button>
         </div>
-            <h1 class="pull-xs-left">
-                Your Journals
-            </h1>
+        <div class="col-md-6">
+          <h1 class="pull-xs-left">
+              Your Journals
+              <a href="/help#journals" class="help-icon" style="color:blue; font-size:14px;">help</a>
+          </h1>
+
+        </div>
+
 
             <hr/>
             <!-- SEARCH BAR AREA -->

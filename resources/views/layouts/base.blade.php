@@ -81,6 +81,7 @@
       <script src="{{ asset('js/popper.min.js') }}"></script>
       <script src="{{ asset('js/jquery-ui.js') }}"></script>
       <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+      
       @if(isset(Auth::user()->setting->theme))
       @if(Auth::user()->setting->theme == 0)
       <script src="{{ asset('js/mdb.min.js') }}"></script>

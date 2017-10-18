@@ -7,6 +7,8 @@
                 <h1 class="text-center">Help and FAQ</h1>
             </div>
         </div>
+        <div id="journals">
+
 
         <!-- Journals Help Title -->
         <div class="row">
@@ -69,8 +71,9 @@
                 </div>
             </div>
         </div>
+        </div>
 
-
+        <div id="entries">
         <!-- Notes Help Title -->
         <div class="row mt-4">
             <div class="col-12">
@@ -146,6 +149,7 @@
                 </div>
             </div>
 
+        </div>
         </div>
     </div>
 @endsection
