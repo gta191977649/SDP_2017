@@ -34,9 +34,11 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('notes','NotesController');
     Route::get('notes/{note}/history/','NotesController@showHistory')->name('notes.history');
     Route::get('notes/{note}/history/','NotesController@showHistory')->name('notes.history');
+    Route::get('notes/hide/{note}','NotesController@hideNote')->name('notes.hide');
 
     Route::get('notes/{notebookID}/createNote','NotesController@createNote')->name('notes.createNote');
     Route::get('notes/{notebookID}/search','NotebooksController@searchEntry')->name('notes.search');
+    
     Route::get('ucp/index','UCPController@index')->name('ucp.index');
     Route::get('ucp/setting','SettingController@index')->name('ucp.setting.index');
     Route::post('ucp/setting','SettingController@applyTheme')->name('ucp.setting.theme');

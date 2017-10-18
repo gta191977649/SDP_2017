@@ -132,13 +132,14 @@ class NotebooksController extends Controller {
         {
             $notes = $notes->whereNull('deleted_at');
         }
+        $notes = $notes->where('hide', '!=', '1');
         $notes = $notes->orderBy('created_at', 'desc')->get();
         //return $notes;
         //return $notes->find(1)->noterecords;
         //$n = $notes->find(2)->noterecords->first();
         //$notes->find(2)->noterecords->first()->title;
         //return $n->created_at;
-        return view('notes/index')->with('notes', $notes)->with('notebook', $notebook)->with('active', !$allEntries)->with('searching',false);
+        return view('notes/index')->with('notes', $notes)->with('notebook', $notebook)->with('active', !$allEntries)->with('searching', false);
     }
 
     public function searchEntry(Request $req, $notebookID)
@@ -146,35 +147,56 @@ class NotebooksController extends Controller {
         $data = $req->all();
         $notebook = NoteBook::withTrashed()->find($notebookID);
         $NID = $notebookID;
-        $results = DB::select(DB::raw("select n.id as NoteID, r.id as Record from notes n
+        $query = "select n.id as NoteID, r.id as Record from notes n
                                         join noterecords r on n.id = r.note_id
-                                        where r.id = (select max(id) from noterecords where note_id = n.id)
-                                        and n.notebook_id = :NID;"), array('NID' => $NID));
+                                        where r.id = (select max(id) from noterecords where note_id = n.id)"
+                . "and n.notebook_id = :NID ";
+        if ($req->has('hidden'))
+        {
+            if ($data['hidden'] == 1)
+            {
+                $query = $query . " or n.hide = 1";
+            }
+        }
+        if ($req->has('deleted'))
+        {
+            if ($data['deleted'] == 1)
+            {
+                $query = $query . " or n.deleted_at is not null";
+            }
+        }
+        $query = $query . ';';
+        $results = DB::select(DB::raw($query), array('NID' => $NID));
         $recordIDs = array();
         foreach ($results as $r)
         {
             $recordIDs[] = $r->Record;
         }
         $noterecords = DB::table('noterecords')->whereIn('id', $recordIDs);
-        if ($req->has('entryKeyworks'))
+
+        if ($req->has('entryKeywords'))
         {
             $keywords = explode(' ', $data['entryKeywords']);
-            foreach ($keyword as $keywords)
+            foreach ($keywords as $keyword)
             {
-                $noterecords->where('title', 'LIKE', '%$' . $keyword . '$%')
-                        ->orWhere('body', 'LIKE', '%$' . $keyword . '$%');
+                $noterecords->Where('title', 'LIKE', '%' . $keyword . '%')
+                        ->orWhere('body', 'LIKE', '%' . $keyword . '%');
             }
         }
         if ($req->has('fromDate'))
         {
+            
             $parsed = date_create_from_format("d/m/Y", $data['fromDate']);
             $noterecords->where('created_at', '>=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
         if ($req->has('toDate'))
         {
+            
             $parsed = date_create_from_format("d/m/Y", $data['toDate']);
             $noterecords->where('created_at', '<=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
+
+
         $ress = $noterecords->get();
         $noteIDs = array();
 
@@ -183,7 +205,32 @@ class NotebooksController extends Controller {
             //Get the note object for each record found
             $noteIDs[] = $record->note_id;
         }
-        $notes = Note::whereIn('id', $noteIDs)->get();
+        
+        $notes = Note::whereIn('id', $noteIDs);
+        
+        if ($req->has('hidden'))
+        {
+            if ($data['hidden'] == 1)
+            {
+                $notes = $notes->orWhere('hide', '=', '1');
+            } else
+            {
+                $notes = $notes->where('hide', '!=', '1');
+            }
+        } else
+        {
+            $notes = $notes->where('hide', '!=', '1');
+        }
+
+        if ($req->has('deleted'))
+        {
+            if ($data['deleted'] == 1)
+            {
+                $notes = $notes->withTrashed();
+            }
+        }
+
+        $notes = $notes->orderBy('created_at', 'desc')->get();
         return view('notes/index')->with('notes', $notes)->with('notebook', $notebook)->with('searching', true)->with('active', false);
     }
 

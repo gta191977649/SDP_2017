@@ -39,9 +39,9 @@
         </a>
     </div>
     <hr/>
-    <!-- SEARCH BAR AREA -->	
+    <!-- SEARCH BAR AREA -->
     <div class="row">
-        <div class="col-sm-12">		
+        <div class="col-sm-12">
             <div id="searchCollapse">
                 <h4>Search</h4>
                 <div>
@@ -52,21 +52,36 @@
                                 <input class="form-control" name="entryKeywords" type="text" placeholder="Key words..">
                             </div>
                         </div>
-                        <div class="form-row">				
+                        <div class="form-row">
                             <div class="col">
-                                <label class="col-form-label" for="fromDate">From</label>							
+                                <label class="col-form-label" for="fromDate">From</label>
                                 <input class="datepicker form-control" id="fromDate" name="fromDate" type="text"  placeholder="DD/MM/YYYY">
                             </div>
                             <div class="col">
-                                <label class="col-form-label" for="toDate">To</label>							
+                                <label class="col-form-label" for="toDate">To</label>
                                 <input class="datepicker form-control" id="toDate" name="toDate" type="text"  placeholder="DD/MM/YYYY">
                             </div>
+
                         </div>
-                        <div class="form-group float-right">                    
-                            <div class="form-group col-md-6">
+                        <div class="form-group float-left">
+                            <div class="col">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input id="hidden" class="form-check-input" name="hidden" type="checkbox" value="1"/>
+                                        Include Hidden Entries
+                                    </label>
+                                </div>
+                                 <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input id="deleted" class="form-check-input" name="deleted" type="checkbox" value="1"/>
+                                        Include Deleted Entries
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="form-group float-right">
                                 <button class="btn btn-primary" type="submit" role="button">Submit</button>
-                            </div>	
-                        </div>
+                            </div>
                     </form>
                 </div>
             </div>
@@ -102,6 +117,32 @@
 
                 <hr/>
                 <a class="card-link" href="{{ route('notes.history',$notesObj->id) }}">History</a>
+            </div>
+        </div>
+        <br/>
+        @elseif($notesObj->isHide())
+            <div class="card mt-3">
+            <div class="card-body">
+                <div class="fl-right">{{ $notesObj->noterecords->last()['created_at']}}</div>
+                <h4 class="card-title blue-col">
+                    {{ $notesObj->noterecords->last()['title'] }}
+                    <span class="badge badge-warning">Hidden</span>
+                </h4>
+                <p class="card-text">
+                    {!! $notesObj->noterecords->last()['body'] !!}
+                </p>
+
+                <hr/>
+
+                <form class="fl-right" action="{{ route('notes.destroy',$notesObj->id) }}" method="POST">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    <input class="btn btn-sm btn-danger fl-right" type="submit" value="Delete">
+                </form>
+                <a class="card-link btn btn-sm btn-primary" href="{{ route('notes.edit',$notesObj->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Edit</a>
+                <a class="card-link btn btn-sm btn-primary" href="{{ route('notes.history',$notesObj->id) }}"><i class="fa fa-history" aria-hidden="true"></i>
+                    History</a>
             </div>
         </div>
         <br/>
