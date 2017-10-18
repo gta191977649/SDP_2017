@@ -26,7 +26,7 @@ class NotesController extends Controller {
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -90,7 +90,7 @@ class NotesController extends Controller {
 
         //get the note that user want to edit
         $note = Note::find($id);
-        //get the latest version of the note 
+        //get the latest version of the note
         $lastVer = $note->noterecords->last();
         //return $lastVer it to the front end;
         return view('notes.edit')->with('note', $lastVer);
@@ -149,5 +149,20 @@ class NotesController extends Controller {
     public function createNote($notebookID)
     {
         return view('notes/create')->with('id', $notebookID);
+    }
+
+    public function hideNote($id){
+        //get note by id
+        $note = Note::where('id',$id)->first();
+
+        //Get if note is hidden
+        $isHidden = $note->isHide();
+
+        //Set the hidden to the opposite of it's current hidden state
+        $note->setHide(!$isHidden);
+
+        //Return back to the page requested
+        return back();
+
     }
 }

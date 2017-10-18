@@ -169,6 +169,8 @@ class NotebooksController extends Controller {
             $parsed = date_create_from_format("d/m/Y", $data['toDate']);
             $noterecords->where('created_at', '<=', $parsed->format('Y-m-d') . ' 00:00:00');
         }
+
+
         $ress = $noterecords->get();
         $noteIDs = array();
 

@@ -9,10 +9,10 @@ class Note extends Model
     //
 
     use SoftDeletes;
-    protected $fillable=['notebook_id'];
+    protected $fillable=['notebook_id','hide','active'];
     protected $dates = ['deleted_at'];
 
-    
+
     public function noterecords()
     {
         return $this->hasMany("App\NoteRecord")->withTrashed();
@@ -22,7 +22,13 @@ class Note extends Model
     {
         return $this->belongsTo("App\NoteBook")->withTrashed();
     }
-   
-    
 
+    public function isHide(){
+        return $this->hide;
+    }
+
+    public function setHide($bool){
+        $this->hide = $bool;
+        $this->save();
+    }
 }

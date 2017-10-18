@@ -22,7 +22,7 @@
     <h1 class="pull-xs-left">
         @if($active)
         Active Entries {{ $notebook->trashed() ? "History" : ""}}
-        @else 
+        @else
         All Entries {{ $notebook->trashed() ? "History" : ""}}
         @endif
     </h1>
@@ -35,9 +35,9 @@
         </a>
     </div>
     <hr/>
-    <!-- SEARCH BAR AREA -->	
+    <!-- SEARCH BAR AREA -->
     <div class="row">
-        <div class="col-sm-12">		
+        <div class="col-sm-12">
             <div id="searchCollapse">
                 <h4>Search</h4>
                 <div>
@@ -48,20 +48,29 @@
                                 <input class="form-control" name="entryName" type="text" placeholder="Entry title..">
                             </div>
                         </div>
-                        <div class="form-row">				
+                        <div class="form-row">
                             <div class="col">
-                                <label class="col-form-label" for="fromDate">From</label>							
+                                <label class="col-form-label" for="fromDate">From</label>
                                 <input class="datepicker form-control" id="fromDate" name="fromDate" type="text"  placeholder="DD/MM/YYYY">
                             </div>
                             <div class="col">
-                                <label class="col-form-label" for="toDate">To</label>							
+                                <label class="col-form-label" for="toDate">To</label>
                                 <input class="datepicker form-control" id="toDate" name="toDate" type="text"  placeholder="DD/MM/YYYY">
                             </div>
+
                         </div>
-                        <div class="form-group float-right">                    
+                        <div class="form-group float-right">
+                            <div class="col">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input id="hidden" class="form-check-input" name="hidden" type="checkbox" value="1"/>
+                                        Show Only Hidden
+                                    </label>
+                                </div>
+                            </div>
                             <div class="form-group col-md-6">
                                 <button class="btn btn-primary" type="submit" role="button">Submit</button>
-                            </div>	
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -101,6 +110,8 @@
             </div>
         </div>
         <br/>
+        @elseif($notesObj->isHide())
+            <!-- Do Nothing -->
         @else
         <div class="card mt-3">
             <div class="card-body">
@@ -118,6 +129,10 @@
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
                     <input class="btn btn-sm btn-danger fl-right" type="submit" value="Delete">
+                </form>
+                <form class="fl-right" action="{{ route('notes.hide',$notesObj->id) }}" method="GET">
+                    {{ csrf_field() }}
+                    <input class="btn btn-sm btn-secondary fl-right" type="submit" value="Hide">
                 </form>
                 <a class="card-link btn btn-sm btn-primary" href="{{ route('notes.edit',$notesObj->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     Edit</a>
