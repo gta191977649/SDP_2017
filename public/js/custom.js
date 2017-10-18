@@ -56,6 +56,7 @@ $(document).ready(function () {
     }
 
     $('.notebook-hidden').hide();
+    $('.help-icon').html('<i class="fa fa-info-circle" aria-hidden="true"></i> Help');
 
 });
 

@@ -22,6 +22,7 @@
         </div>
     </div>
     </div>
+    <a class="btn btn-red pull-right" href="{{ url()->previous() }}"> Back</a>
     <h1>Create Entry</h1>
     <form action="{{route('notes.store')}}" method="POST" onsubmit="return validateForm()">
     {{ csrf_field() }}

@@ -32,7 +32,7 @@
                     Journal
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                
+
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -70,7 +70,7 @@
       </main>
       <footer class="footer">
          <div class="container">
-            <div class="text-muted">©Journal 2017 | Powered by <a class="footer-link" href="https://laravel.com">Laravel</a> | <a class="footer-link" href="{{route('help')}}">Help</a></div>
+            <div class="text-muted">©Journal 2017 | Powered by <a class="footer-link" href="https://laravel.com">Laravel</a> | <a class="footer-link" href="{{route('help')}}">Help</a> | <a href="" class="footer-link">Report a Bug</a></div>
          </div>
       </footer>
       <!-- Js Stuff -->
@@ -81,7 +81,7 @@
       <script src="{{ asset('js/popper.min.js') }}"></script>
       <script src="{{ asset('js/jquery-ui.js') }}"></script>
       <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-      
+
       @if(isset(Auth::user()->setting->theme))
       @if(Auth::user()->setting->theme == 0)
       <script src="{{ asset('js/mdb.min.js') }}"></script>
