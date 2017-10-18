@@ -19,19 +19,23 @@
     </div>
 
     <div class="pull-xs-left">
-    <h1 class="pull-xs-left">
-        @if($active)
-        Active Entries {{ $notebook->trashed() ? "History" : ""}}
-        @else 
-        All Entries {{ $notebook->trashed() ? "History" : ""}}
-        @endif
-    </h1>
+        <h1 class="pull-xs-left">
+            @if($active)
+            Active Entries {{ $notebook->trashed() ? "History" : ""}}
+            @else 
+            @if($searching)
+            Search Results
+            @else
+            All Entries {{ $notebook->trashed() ? "History" : ""}}
+            @endif
+            @endif
+        </h1>
         <a class="trigger blue lighten-4" href="{{route('notebooks.show', ['notebookID' => $notebook->id, 'allEntries' => $active ])}}">
-        @if($active)
+            @if($active)
             Show All Entries
-        @else
+            @else
             Show Active Entries
-        @endif
+            @endif
         </a>
     </div>
     <hr/>
@@ -45,7 +49,7 @@
                         {{ csrf_field() }}
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-control" name="entryName" type="text" placeholder="Entry title..">
+                                <input class="form-control" name="entryKeywords" type="text" placeholder="Key words..">
                             </div>
                         </div>
                         <div class="form-row">				

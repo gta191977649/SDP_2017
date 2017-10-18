@@ -125,19 +125,20 @@ class NotebooksController extends Controller {
     {
         $notebook = NoteBook::withTrashed()->find($id);
         $notes = $notebook->notes();
-        if($allEntries)
+        if ($allEntries)
         {
-                $notes = $notes->withTrashed();
-        }else{
+            $notes = $notes->withTrashed();
+        } else
+        {
             $notes = $notes->whereNull('deleted_at');
         }
-        $notes = $notes->orderBy('created_at','desc')->get();
+        $notes = $notes->orderBy('created_at', 'desc')->get();
         //return $notes;
         //return $notes->find(1)->noterecords;
         //$n = $notes->find(2)->noterecords->first();
         //$notes->find(2)->noterecords->first()->title;
         //return $n->created_at;
-        return view('notes/index')->with('notes', $notes)->with('notebook', $notebook)->with('active' , !$allEntries);
+        return view('notes/index')->with('notes', $notes)->with('notebook', $notebook)->with('active', !$allEntries)->with('searching',false);
     }
 
     public function searchEntry(Request $req, $notebookID)
@@ -155,9 +156,14 @@ class NotebooksController extends Controller {
             $recordIDs[] = $r->Record;
         }
         $noterecords = DB::table('noterecords')->whereIn('id', $recordIDs);
-        if ($req->has('entryName'))
+        if ($req->has('entryKeyworks'))
         {
-            $noterecords->where('title', 'LIKE', '%' . $data['entryName'] . '%');
+            $keywords = explode(' ', $data['entryKeywords']);
+            foreach ($keyword as $keywords)
+            {
+                $noterecords->where('title', 'LIKE', '%$' . $keyword . '$%')
+                        ->orWhere('body', 'LIKE', '%$' . $keyword . '$%');
+            }
         }
         if ($req->has('fromDate'))
         {
@@ -178,7 +184,7 @@ class NotebooksController extends Controller {
             $noteIDs[] = $record->note_id;
         }
         $notes = Note::whereIn('id', $noteIDs)->get();
-        return view('notes/index')->with('notes', $notes)->with('notebook', $notebook);
+        return view('notes/index')->with('notes', $notes)->with('notebook', $notebook)->with('searching', true)->with('active', false);
     }
 
 }
