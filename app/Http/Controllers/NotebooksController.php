@@ -62,7 +62,7 @@ class NotebooksController extends Controller {
     {
         $user = Auth::user();
         $notebook = $user->notebooks()->where('id', $id)->first();
-        return view('notebooks/modal-rename', ['notebook' => $notebook]);
+        return view('notebooks.modal-rename', ['notebook' => $notebook]);
     }
 
     public function loadCreateModal()
