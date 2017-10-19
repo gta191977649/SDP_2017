@@ -130,15 +130,15 @@
             @foreach ($notes as $noteObj)
             @if(!($noteObj->isDeleted()) && ($noteObj->isHidden()))
             <div class="col-sm-6 col-md-3 notebook">
-                <a  class="" href="{{ route('notebooks.show',$noteObj->id) }}">
+
                     <div class="card p-2">
                         <div class="card-block">
 
-
+                            <a  class="" href="{{ route('notebooks.show',$noteObj->id) }}">
                             <h4 class="notebook-title">
                                 {{ $noteObj->name }}
                             </h4>
-
+                            </a>
                             <span class="badge badge-secondary fl-right mt-1">HIDDEN</span>
                         </div>
                         <div class="card-block pt-2">
@@ -159,7 +159,6 @@
                             </form>
                         </div>
                     </div>
-                </a>
             </div>
             @endif
             @endforeach
